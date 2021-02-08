@@ -5,3 +5,4 @@ I should also see a navigation bar which would let us navigate the new by catego
 When navigating to a particular news story I should be able to click to submit my upvote or downvote which will be tracked. A user should only vote once. 
 - As a user I also want to be able to submit a local story so that it can be reviewed and potentially be displayed as a new local story. 
 Acceptance criteria: 
+
