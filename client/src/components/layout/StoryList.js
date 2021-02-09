@@ -44,7 +44,7 @@ const StoryList = (props) => {
           throw error;
         }
       } else {
-        getStories();
+        // getStories();
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -62,17 +62,17 @@ const StoryList = (props) => {
       const NewsData = await response.json();
       console.log(NewsData);
 
-      let NewApiArray = [];
-      NewsData.articles.forEach((story) => {
-        NewApiArray.push({
-          title: story.title,
-          description: story.description,
-          url: story.url,
-          urlToImage: story.urlToImage,
-        });
-        setStories(...stories, NewApiArray);
-        postNewsApiStories(NewApiArray);
-      });
+      // let NewsApiArray = [];
+      // NewsData.articles.forEach((story) => {
+      //   NewsApiArray.push({
+      //     title: story.title,
+      //     description: story.description,
+      //     url: story.url,
+      //     urlToImage: story.urlToImage,
+      //     author: story.author,
+      //   });
+      // });
+      setStories(...stories, NewsData.articles);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }

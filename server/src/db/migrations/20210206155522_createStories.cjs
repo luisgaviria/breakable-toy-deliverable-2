@@ -9,7 +9,7 @@ exports.up = async (knex) => {
   return knex.schema.createTable("stories", (table) => {
     table.bigIncrements("id").primary();
     table.string("author");
-    table.string("content");
+    table.string("content", 1000000);
     table.string("publishedAt");
     table.string("title").notNullable();
     table.string("description", 1000000).notNullable();
