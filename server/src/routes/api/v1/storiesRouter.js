@@ -21,6 +21,17 @@ storiesRouter.get("/", async (req, res) => {
   }
 });
 
+// storiesRouter.get("/:id", async (req, res) => {
+//   const storyId = req.params.id;
+//   try {
+//     const story = await Story.query().findById(storyId);
+//     const serializedStory = await StorySerializer.
+
+//   } catch (error) {
+
+//   }
+// })
+
 storiesRouter.post("/NewsApi", async (req, res) => {
   let storiesToSendBack = [];
   try {

@@ -8,6 +8,7 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import StoryList from "../components/layout/StoryList.js";
+// import StoryShow from "./layout/StoryShow.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -27,6 +28,10 @@ const App = (props) => {
         <Route exact path="/stories">
           <StoryList user={currentUser} />
         </Route>
+        <Route exact path="/stories/:id">
+          <StoryShow user={currentUser} />
+        </Route>
+
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

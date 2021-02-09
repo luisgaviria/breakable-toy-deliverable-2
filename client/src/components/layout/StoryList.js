@@ -78,7 +78,7 @@ const StoryList = (props) => {
   //     }
   //     const tweetData = await response.json();
   //     console.log(tweetData);
-  //     // setStories(...stories, NewsData.articles);
+  //     // setStories(...stories, tweetData.articles);
   //   } catch (error) {
   //     console.error(`Error in fetch: ${error.message}`);
   //   }
@@ -90,11 +90,9 @@ const StoryList = (props) => {
 
   return (
     <div>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       <div className="top-section">
         <form className="search-form">
           <h2 className="search-title"> Welcome Reader </h2>
-          <ReactPlayer url="https://www.facebook.com/UrabaTelevision/videos/2413886382237502" />
         </form>
       </div>
       <div>
