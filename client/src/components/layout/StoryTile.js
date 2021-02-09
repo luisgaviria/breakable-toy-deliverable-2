@@ -7,8 +7,13 @@ const StoryTile = (props) => {
     <div className="tile-container">
       <div>
         <div className="story-info-cell" id="story-tile">
-          <h3 id="tile-title">{title}</h3>
+          <Link to={`${url}`}></Link>
           <img className="tile-image" src={urlToImage} />
+
+          <a target="_blank" href={url}>
+            <h3 id="tile-title">{title}</h3>
+          </a>
+
           <h5 className="story-description"> {description} </h5>
           <h5 className="story-author">{author}</h5>
         </div>

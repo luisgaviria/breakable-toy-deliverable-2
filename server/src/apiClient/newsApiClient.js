@@ -8,6 +8,7 @@ class newsApiClient {
       const url = `http://newsapi.org/v2/top-headlines?country=co&apiKey=${newsApiKey}`;
       const apiResponse = await got(url);
       const responseBody = apiResponse.body;
+      console.log(responseBody);
       return responseBody;
     } catch (error) {
       return { error: error.message };

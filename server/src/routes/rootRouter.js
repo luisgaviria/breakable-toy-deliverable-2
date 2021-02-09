@@ -4,6 +4,7 @@ import usersRouter from "./api/v1/usersRouter.js";
 import clientRouter from "./clientRouter.js";
 import storiesRouter from "./api/v1/storiesRouter.js";
 import newsApiRouter from "./api/v1/newsApiRouter.js";
+// import twitterApiRouter from "./api/v1/twitterApiRouter.js";
 
 const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
@@ -12,5 +13,6 @@ rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
 rootRouter.use("/api/v1/users", usersRouter); //place your server-side routes here
 rootRouter.use("/api/v1/stories", storiesRouter);
 rootRouter.use("/api/v1/newsApi", newsApiRouter);
+// rootRouter.use("/api/v1/tweets", twitterApiRouter);
 
 export default rootRouter;
