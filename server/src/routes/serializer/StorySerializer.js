@@ -4,6 +4,7 @@ class StorySerializer {
   static async showData(story) {
     const allowedAttributes = [
       "id",
+      "apiId",
       "author",
       "content",
       "publishedAt",
@@ -24,6 +25,7 @@ class StorySerializer {
   static async showDetails(story) {
     const allowedAttributes = [
       "id",
+      "apiId",
       "author",
       "content",
       "publishedAt",

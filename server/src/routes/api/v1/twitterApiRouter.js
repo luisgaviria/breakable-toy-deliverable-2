@@ -11,15 +11,15 @@ twitterApiRouter.get("/", async (req, res) => {
     console.log(error);
   }
 
-  // twitterClient.usersSearch({ q: "twitterDev" }).then((data) => {
-  //   if (data.error) {
-  //     console.log(`Error from news Api: ${data.error}`);
-  //   } else {
-  //     const parsedResponse = JSON.parse(data);
+  twitterClient.usersSearch({ q: "twitterDev" }).then((data) => {
+    if (data.error) {
+      console.log(`Error from news Api: ${data.error}`);
+    } else {
+      const parsedResponse = JSON.parse(data);
 
-  //     res.set({ "Content-Type": "application/json" }).status(200).json(parsedResponse);
-  //   }
-  // });
+      res.set({ "Content-Type": "application/json" }).status(200).json(parsedResponse);
+    }
+  });
 });
 
 export default twitterApiRouter;

@@ -4,11 +4,16 @@ import { hot } from "react-hot-loader/root";
 
 import getCurrentUser from "../services/getCurrentUser";
 import "../assets/scss/main.scss";
+// import "semantic-ui-css/semantic.min.css";
+
 import RegistrationForm from "./registration/RegistrationForm";
+import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import SignInForm from "./authentication/SignInForm";
+import UserProfile from "./layout/UserProfile.js";
 import TopBar from "./layout/TopBar";
 import StoryList from "../components/layout/StoryList.js";
-// import StoryShow from "./layout/StoryShow.js";
+import StoryShow from "./layout/StoryShow.js";
+import NewStoryForm from "./layout/NewStoryForm.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -28,12 +33,14 @@ const App = (props) => {
         <Route exact path="/stories">
           <StoryList user={currentUser} />
         </Route>
+        <AuthenticatedRoute exact path="/stories/new" component={NewStoryForm} user={currentUser} />
         <Route exact path="/stories/:id">
           <StoryShow user={currentUser} />
         </Route>
 
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
+        <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
       </Switch>
     </Router>
   );

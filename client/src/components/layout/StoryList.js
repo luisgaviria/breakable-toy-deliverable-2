@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from "react";
 import StoryTile from "./StoryTile.js";
+import { withRouter } from "react-router";
 import ReactPlayer from "react-player";
 
 const StoryList = (props) => {
   const [stories, setStories] = useState([]);
 
-  const getStories = async () => {
-    try {
-      const response = await fetch("/api/v1/stories");
+  // const getStories = async () => {
+  //   try {
+  //     const response = await fetch("/api/v1/stories");
 
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        const error = new Error(errorMessage);
-        throw error;
-      }
-      const body = await response.json();
-      setStories(body.stories);
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`);
-    }
-  };
+  //     if (!response.ok) {
+  //       const errorMessage = `${response.status} (${response.statusText})`;
+  //       const error = new Error(errorMessage);
+  //       throw error;
+  //     }
+  //     const body = await response.json();
+  //     setStories(body.stories);
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${error.message}`);
+  //   }
+  // };
   useEffect(() => {
-    getStories();
+    // getStories();
     getNewsApiStories();
+    // getMediaStackStories();
   }, []);
 
   // const postNewsApiStories = async (newStories) => {
@@ -62,11 +64,31 @@ const StoryList = (props) => {
       }
       const NewsData = await response.json();
       console.log(NewsData);
-      setStories(...stories, NewsData.articles);
+
+      setStories(...stories, NewsData);
+      // debugger;
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
   };
+
+  // const getMediaStackStories = async () => {
+  //   try {
+  //     const response = await fetch(`api/v1/mediaStackApi`);
+  //     debugger;
+  //     if (!response.ok) {
+  //       const errorMessage = `${response.status} (${response.statusText})`;
+  //       const error = new Error(errorMessage);
+  //       throw error;
+  //     }
+  //     const StackData = await response.json();
+  //     debugger;
+  //     console.log(StackData);
+  //     setStories(...stories, StackData.data);
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${error.message}`);
+  //   }
+  // };
 
   // const getNewsApiStories = async () => {
   //   try {
@@ -83,9 +105,23 @@ const StoryList = (props) => {
   //     console.error(`Error in fetch: ${error.message}`);
   //   }
   // };
-
+  // debugger;
   const storyListItems = stories.map((storyItem) => {
-    return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
+    //storyItem.id is undefined currently
+    //flow control to check if the storyItem has an id or an APIid
+    //if(storyItem.id)
+    //return below return, using storyItemId
+    //otherwise we want to return storyItem.apiId
+    // debugger;
+    if (storyItem.id) {
+      return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
+    } else {
+      return <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />;
+    }
+
+    //add column to story table for apiId.
+    //keep in mind to use same logic on story tile
+    // return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
   });
 
   return (
@@ -104,4 +140,4 @@ const StoryList = (props) => {
   );
 };
 
-export default StoryList;
+export default withRouter(StoryList);

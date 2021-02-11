@@ -2,10 +2,13 @@ import express from "express";
 import objection from "objection";
 const { ValidationError } = objection;
 
-import Story from "../../../models/Story.js";
+import { Story } from "../../../models/index.js";
 import StorySerializer from "../../serializer/StorySerializer.js";
+import storyReviewsRouter from "./storyReviewsRouter.js";
 
 const storiesRouter = new express.Router();
+
+storiesRouter.use("/:storyId/reviews", storyReviewsRouter);
 
 storiesRouter.get("/", async (req, res) => {
   try {
@@ -15,22 +18,27 @@ storiesRouter.get("/", async (req, res) => {
       const serializedStory = await StorySerializer.showData(story);
       serializedStories.push(serializedStory);
     }
-    return res.status(200).json({ stories: stories });
+    return res.status(200).json({ stories: serializedStories });
   } catch (error) {
     return res.status(500).json({ errors: error });
   }
 });
 
-// storiesRouter.get("/:id", async (req, res) => {
-//   const storyId = req.params.id;
-//   try {
-//     const story = await Story.query().findById(storyId);
-//     const serializedStory = await StorySerializer.
-
-//   } catch (error) {
-
-//   }
-// })
+storiesRouter.get("/:id", async (req, res) => {
+  const storyId = req.params.id;
+  debugger;
+  console.log(req.params, "hello form the back end");
+  try {
+    const story = await Story.query().findById(storyId);
+    debugger;
+    const serializedStory = await StorySerializer.showDetails(story);
+    debugger;
+    return res.status(200).json({ story: serializedStory });
+  } catch (error) {
+    // console.log(error);
+    return res.status(500).json({ errors: error });
+  }
+});
 
 storiesRouter.post("/NewsApi", async (req, res) => {
   let storiesToSendBack = [];

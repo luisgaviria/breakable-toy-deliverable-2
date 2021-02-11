@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Route, useParams, withRouter } from "react-router-dom";
 import translateServerErrors from "../../services/translateServerErrors.js";
+import NewReviewForm from "./NewReviewForm.js";
+import ReviewTile from "./ReviewTile.js";
 
 const StoryShow = (props) => {
   const [errors, setErrors] = useState({});
@@ -18,9 +20,11 @@ const StoryShow = (props) => {
   });
 
   const getStory = async () => {
+    // props.match.params.id is currently coming back as undefined.
     const storyId = props.match.params.id;
     try {
       const response = await fetch(`/api/v1/stories/${storyId}`);
+      // debugger;
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         const error = new Error(errorMessage);
@@ -33,44 +37,43 @@ const StoryShow = (props) => {
     }
   };
 
-  const postReview = async (newReviewData) => {
-    try {
-      const storyId = await fetch(`/api/v1/stories/${storyId}/reviews`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify(newReviewData),
-      });
-      if (!response.ok) {
-        if (response.status === 422) {
-          const body = await response.json();
-          const newErrors = translateServerErrors(body.errors);
-          return setErrors(newErrors);
-        } else {
-          const errorMessage = `${response.status} (${response.statusText})`;
-          const error = new Error(errorMessage);
-          throw error;
-        }
-      } else {
-        const body = await response.json();
-        setStory({
-          ...story,
-          averageRating: body.story.averageRating,
-          reviews: [...story.reviews, body.review],
-        });
-      }
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`);
-    }
-  };
+  // const postReview = async (newReviewData) => {
+  //   try {
+  //     const storyId = await fetch(`/api/v1/stories/${storyId}/reviews`, {
+  //       method: "POST",
+  //       headers: new Headers({
+  //         "Content-Type": "application/json",
+  //       }),
+  //       body: JSON.stringify(newReviewData),
+  //     });
+  //     if (!response.ok) {
+  //       if (response.status === 422) {
+  //         const body = await response.json();
+  //         const newErrors = translateServerErrors(body.errors);
+  //         return setErrors(newErrors);
+  //       } else {
+  //         const errorMessage = `${response.status} (${response.statusText})`;
+  //         const error = new Error(errorMessage);
+  //         throw error;
+  //       }
+  //     } else {
+  //       const body = await response.json();
+  //       setStory({
+  //         ...story,
+  //         reviews: [...story.reviews, body.review],
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${error.message}`);
+  //   }
+  // };
   useEffect(() => {
     getStory();
   }, []);
 
-  const allTheReviews = story.reviews.map((review) => {
-    return <ReviewTile key={review.id} review={review} errors={errors} />;
-  });
+  // const allTheReviews = story.reviews.map((review) => {
+  //   return <ReviewTile key={review.id} review={review} errors={errors} />;
+  // });
 
   return (
     <div className="image grid-container small-10 small-centered columns" id="image-container">
@@ -83,19 +86,21 @@ const StoryShow = (props) => {
               <h3 className="title-content">
                 {story.content}
                 <br />
-                Average rating: {story.averageRating}
+                {/* Average rating: {story.averageRating} */}
                 <br />
               </h3>
             </span>
           </h5>
           <br></br>
         </aside>
-        <p id="park-show-description">{story.description}</p>
+        <p id="story-show-description">{story.description}</p>
       </div>
-      <div className="review-comment-box">
-        <NewReviewForm parkId={story.id} postReview={postReview} />
+      {/* <div className="review-comment-box"> */}
+      {/* <NewReviewForm storyId={story.id} postReview={postReview} />
         {allTheReviews}
-      </div>
+      </div> */}
     </div>
   );
 };
+
+export default withRouter(StoryShow);
