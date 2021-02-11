@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-// import { Button } from "semantic-ui-react";
+
 import translateServerErrors from "../../services/translateServerErrors.js";
 import FormError from "./FormError.js";
 
@@ -138,8 +138,8 @@ const NewStoryForm = (props) => {
           />
         </label>
 
-        <div>
-          <Button content="Primary" primary />
+        <div className="button-group">
+          <input className="button" type="submit" value="Submit" />
         </div>
       </form>
     </div>
