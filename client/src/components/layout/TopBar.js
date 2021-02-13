@@ -28,7 +28,16 @@ const TopBar = ({ user }) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/stories">Stories</Link>
+            <Link to="/stories">Colombia</Link>
+          </li>
+          <li>
+            <Link to="/science">Science</Link>
+          </li>
+          <li>
+            <Link to="/sports">Sports</Link>
+          </li>
+          <li>
+            <Link to="/technology">Technology</Link>
           </li>
           <li>
             <Link to="/stories/new">Add your own story</Link>

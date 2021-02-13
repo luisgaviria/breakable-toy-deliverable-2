@@ -1,5 +1,7 @@
 import got from "got";
 
+import config from "../../src/config.js";
+
 const newsApiKey = "4f667e85ebf64b24919832a4ff1475ed";
 
 class newsApiClient {
@@ -10,25 +12,80 @@ class newsApiClient {
       const responseBody = apiResponse.body;
       const parsedBody = JSON.parse(responseBody);
       const allStories = parsedBody.articles.map((data) => {
-        let url = data.url;
-        //isolate url
-        //run split and pop on url
-        //save it to a variable as maybe id
-        //take data object and add new key value pair to it
-        //concat the id to object
-
-        // let id = url.split("article-").pop();
-        let id = url.substr(url.length - 6);
-
+        let id = data.publishedAt;
         const newStory = {
           ...data,
           apiId: id,
         };
-        // debugger;
         return newStory;
       });
-      // debugger;
-      // return parsedBody;
+
+      return allStories;
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
+  static async getScienceData() {
+    try {
+      const url = `http://newsapi.org/v2/top-headlines?category=science&apiKey=${newsApiKey}`;
+      const apiResponse = await got(url);
+      const responseBody = apiResponse.body;
+      const parsedBody = JSON.parse(responseBody);
+      const allStories = parsedBody.articles.map((data) => {
+        let id = data.publishedAt;
+        const newStory = {
+          ...data,
+          apiId: id,
+        };
+        return newStory;
+      });
+
+      return allStories;
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
+
+  static async getSportsData() {
+    try {
+      const url = `http://newsapi.org/v2/top-headlines?category=sports&apiKey=${newsApiKey}`;
+      const apiResponse = await got(url);
+      const responseBody = apiResponse.body;
+      const parsedBody = JSON.parse(responseBody);
+      const allStories = parsedBody.articles.map((data) => {
+        let id = data.publishedAt;
+        const newStory = {
+          ...data,
+          apiId: id,
+        };
+        return newStory;
+      });
+
+      debugger;
+
+      return allStories;
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
+
+  static async getTechData() {
+    try {
+      const url = `http://newsapi.org/v2/top-headlines?category=technology&apiKey=${newsApiKey}`;
+      const apiResponse = await got(url);
+      const responseBody = apiResponse.body;
+      const parsedBody = JSON.parse(responseBody);
+      const allStories = parsedBody.articles.map((data) => {
+        let id = data.publishedAt;
+        const newStory = {
+          ...data,
+          apiId: id,
+        };
+        return newStory;
+      });
+
+      debugger;
+
       return allStories;
     } catch (error) {
       return { error: error.message };

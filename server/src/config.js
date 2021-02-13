@@ -7,5 +7,5 @@ export default {
   session: { secret: process.env.SESSION_SECRET },
   databaseUrl: getDatabaseUrl(getNodeEnv()),
   web: { host: process.env.HOST || "0.0.0.0", port: process.env.PORT || 3000 },
-  mediaStackKey: { key: process.env.mediaStackKey },
+  newsApiKey: { key: process.env.newsApiKey },
 };

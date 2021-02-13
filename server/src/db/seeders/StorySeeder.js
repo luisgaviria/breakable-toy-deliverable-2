@@ -11,6 +11,7 @@ class StorySeeder {
         urlToImage:
           "https://www.eltiempo.com/files/article_main/uploads/2021/02/06/601f0c29e6cdc.jpeg",
         userId: "1",
+        apiId: "14",
       },
       {
         title: "Second newer story",
@@ -20,6 +21,7 @@ class StorySeeder {
         urlToImage:
           "https://www.eltiempo.com/files/article_main/uploads/2021/02/06/601f0c29e6cdc.jpeg",
         userId: "1",
+        apiId: "12",
       },
       {
         title: "Noticias del dia",
@@ -29,6 +31,7 @@ class StorySeeder {
         urlToImage:
           "https://www.eltiempo.com/files/article_main/uploads/2021/02/06/601f0c29e6cdc.jpeg",
         userId: "1",
+        apiId: "13",
       },
     ];
 

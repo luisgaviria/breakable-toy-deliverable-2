@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+// import { Button } from "semantic-ui-react";
 
 import translateServerErrors from "../../services/translateServerErrors.js";
 import FormError from "./FormError.js";
@@ -17,14 +18,17 @@ const NewStoryForm = (props) => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const postStory = async (newStoryData) => {
+    debugger;
     try {
       const response = await fetch(`/api/v1/stories`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
         }),
+
         body: JSON.stringify(newStoryData),
       });
+      debugger;
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
@@ -36,10 +40,12 @@ const NewStoryForm = (props) => {
           throw error;
         }
       } else {
+        debugger;
         setShouldRedirect(true);
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
+      console.log(error);
     }
   };
 
@@ -67,7 +73,7 @@ const NewStoryForm = (props) => {
   };
 
   if (shouldRedirect) {
-    return <Redirect to="/stories" />;
+    return <Redirect to="/stories/new" />;
   }
 
   return (

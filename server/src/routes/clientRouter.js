@@ -8,6 +8,9 @@ const clientRoutes = [
   "/user-sessions/new",
   "/users/new",
   "/stories",
+  "/science",
+  "/sports",
+  "/technology",
   "/stories/:id",
   "/categories",
 ];

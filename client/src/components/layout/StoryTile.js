@@ -16,12 +16,12 @@ const StoryTile = (props) => {
     <div className="tile-container">
       <div>
         <div className="story-info-cell" id="story-tile">
+          <img className="tile-image" src={urlToImage} />
           <Link to={`/stories/${apiId}`}>
-            <img className="tile-image" src={urlToImage} />
             <h3 id="tile-title">{title}</h3>
           </Link>
-
-          {/* <a target="_blank" href={url}>
+          {/* 
+          <a target="_blank" href={url}>
             <h3 id="tile-title">{title}</h3>
           </a> */}
 

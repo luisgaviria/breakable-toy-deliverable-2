@@ -1,58 +1,62 @@
 import React, { useState, useEffect } from "react";
 import StoryTile from "./StoryTile.js";
 import { withRouter } from "react-router";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 
 const StoryList = (props) => {
   const [stories, setStories] = useState([]);
+  // debugger;
 
-  // const getStories = async () => {
-  //   try {
-  //     const response = await fetch("/api/v1/stories");
-
-  //     if (!response.ok) {
-  //       const errorMessage = `${response.status} (${response.statusText})`;
-  //       const error = new Error(errorMessage);
-  //       throw error;
-  //     }
-  //     const body = await response.json();
-  //     setStories(body.stories);
-  //   } catch (error) {
-  //     console.error(`Error in fetch: ${error.message}`);
-  //   }
-  // };
+  const getStories = async () => {
+    try {
+      const response = await fetch("/api/v1/stories");
+      // debugger;
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
+      }
+      const body = await response.json();
+      // debugger;
+      setStories(body.stories);
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
   useEffect(() => {
     // getStories();
+    // getScienceApiStories();
     getNewsApiStories();
     // getMediaStackStories();
   }, []);
 
-  // const postNewsApiStories = async (newStories) => {
-  //   try {
-  //     const response = await fetch(`/api/v1/news/NewsApi`, {
-  //       method: "POST",
-  //       headers: new Headers({
-  //         "Content-Type": "application/json",
-  //       }),
-  //       body: JSON.stringify(newStories),
-  //     });
-  //     if (!response.ok) {
-  //       if (response.status === 422) {
-  //         const body = await response.json();
-  //         const newErrors = translateServerErrors(body.errors);
-  //         return setErrors(newErrors);
-  //       } else {
-  //         const errorMessage = `${response.status} (${response.statusText})`;
-  //         const error = new Error(errorMessage);
-  //         throw error;
-  //       }
-  //     } else {
-  //       // getStories();
-  //     }
-  //   } catch (error) {
-  //     console.error(`Error in fetch: ${error.message}`);
-  //   }
-  // };
+  const postNewsApiStories = async (newStories) => {
+    // debugger;
+    try {
+      const response = await fetch(`/api/v1/stories/NewsApi`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(newStories),
+      });
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json();
+          const newErrors = translateServerErrors(body.errors);
+          return setErrors(newErrors);
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
+        }
+      } else {
+        getStories();
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
 
   const getNewsApiStories = async () => {
     try {
@@ -63,14 +67,38 @@ const StoryList = (props) => {
         throw error;
       }
       const NewsData = await response.json();
-      console.log(NewsData);
+      // debugger;
+      // console.log(NewsData);
+
+      NewsData.map((data) => {
+        data.userId = 2;
+      });
 
       setStories(...stories, NewsData);
       // debugger;
+      postNewsApiStories(NewsData);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
   };
+
+  // const getScienceApiStories = async () => {
+  //   try {
+  //     const response = await fetch(`api/v1/NewsApi`);
+  //     if (!response.ok) {
+  //       const errorMessage = `${response.status} (${response.statusText})`;
+  //       const error = new Error(errorMessage);
+  //       throw error;
+  //     }
+
+  //     const NewsData = await response.json();
+  //     debugger;
+  //     console.log(NewsData);
+  //     setStories(...stories, NewsData);
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${error.message}`);
+  //   }
+  // };
 
   // const getMediaStackStories = async () => {
   //   try {
@@ -128,7 +156,7 @@ const StoryList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <h2 className="search-title"> Welcome Reader </h2>
+          <h2 className="search-title"> Main News </h2>
         </form>
       </div>
       <div>

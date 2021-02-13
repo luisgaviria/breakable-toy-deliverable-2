@@ -4,7 +4,7 @@ import translateServerErrors from "../../services/translateServerErrors.js";
 import NewReviewForm from "./NewReviewForm.js";
 import ReviewTile from "./ReviewTile.js";
 
-const StoryShow = (props) => {
+const ScienceShow = (props) => {
   const [errors, setErrors] = useState({});
   const [story, setStory] = useState({
     author: "",
@@ -23,7 +23,7 @@ const StoryShow = (props) => {
     const storyId = props.match.params.id;
     console.log(storyId);
     try {
-      const response = await fetch(`/api/v1/stories/${storyId}`);
+      const response = await fetch(`/api/v1/science/${storyId}`);
 
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
@@ -38,36 +38,36 @@ const StoryShow = (props) => {
     }
   };
 
-  const postReview = async (newReviewData) => {
-    try {
-      const storyId = await fetch(`/api/v1/stories/${storyId}/reviews`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify(newReviewData),
-      });
-      if (!response.ok) {
-        if (response.status === 422) {
-          const body = await response.json();
-          const newErrors = translateServerErrors(body.errors);
-          return setErrors(newErrors);
-        } else {
-          const errorMessage = `${response.status} (${response.statusText})`;
-          const error = new Error(errorMessage);
-          throw error;
-        }
-      } else {
-        const body = await response.json();
-        setStory({
-          ...story,
-          reviews: [...story.reviews, body.review],
-        });
-      }
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`);
-    }
-  };
+  // const postReview = async (newReviewData) => {
+  //   try {
+  //     const storyId = await fetch(`/api/v1/stories/${storyId}/reviews`, {
+  //       method: "POST",
+  //       headers: new Headers({
+  //         "Content-Type": "application/json",
+  //       }),
+  //       body: JSON.stringify(newReviewData),
+  //     });
+  //     if (!response.ok) {
+  //       if (response.status === 422) {
+  //         const body = await response.json();
+  //         const newErrors = translateServerErrors(body.errors);
+  //         return setErrors(newErrors);
+  //       } else {
+  //         const errorMessage = `${response.status} (${response.statusText})`;
+  //         const error = new Error(errorMessage);
+  //         throw error;
+  //       }
+  //     } else {
+  //       const body = await response.json();
+  //       setStory({
+  //         ...story,
+  //         reviews: [...story.reviews, body.review],
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${error.message}`);
+  //   }
+  // };
   useEffect(() => {
     getStory();
   }, []);
@@ -86,7 +86,6 @@ const StoryShow = (props) => {
             <span>
               <h3 className="title-content">
                 {story.content}
-
                 <br />
                 {/* Average rating: {story.averageRating} */}
                 <br />
@@ -95,14 +94,14 @@ const StoryShow = (props) => {
           </h5>
           <br></br>
         </aside>
-        <h5 id="story-show-description">{story.description}</h5>
+        <p id="story-show-description">{story.description}</p>
       </div>
-      <div className="review-comment-box">
-        <NewReviewForm storyId={story.id} postReview={postReview} />
-        {/* {allTheReviews} */}
-      </div>
+      {/* <div className="review-comment-box"> */}
+      {/* <NewReviewForm storyId={story.id} postReview={postReview} />
+        {allTheReviews}
+      </div> */}
     </div>
   );
 };
 
-export default withRouter(StoryShow);
+export default withRouter(ScienceShow);
