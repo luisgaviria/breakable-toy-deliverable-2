@@ -81,11 +81,12 @@ const ScienceShow = (props) => {
       <div className="image grid-container small-10 small-centered columns">
         <img className="showpage-pic" src={story.urlToImage} />
         <aside className="module">
-          <h3 className="showpage-title">{story.title}</h3>
+          <a target="_blank" href={story.url}>
+            <h3 id="tile-title">{story.title}</h3>
+          </a>
           <h5>
             <span>
               <h3 className="title-content">
-                {story.content}
                 <br />
                 {/* Average rating: {story.averageRating} */}
                 <br />

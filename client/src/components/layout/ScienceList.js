@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 const ScienceList = (props) => {
   const [stories, setStories] = useState([]);
-  debugger;
+
   const getStories = async () => {
     try {
       const response = await fetch("/api/v1/science");
@@ -57,7 +57,6 @@ const ScienceList = (props) => {
   }, []);
 
   const getScienceApiStories = async () => {
-    // debugger;
     try {
       const response = await fetch(`api/v1/NewsApi/science`);
       if (!response.ok) {
@@ -67,15 +66,13 @@ const ScienceList = (props) => {
       }
 
       const NewsData = await response.json();
-      // debugger;
+
       console.log(NewsData);
       setStories(...stories, NewsData);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
   };
-
-  // debugger;
 
   const storyListItems = stories.map((storyItem) => {
     if (storyItem.id) {
@@ -89,6 +86,7 @@ const ScienceList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
+          <img id="logo-img" src="https://i.postimg.cc/0y6wPc74/PHOTO-2021-02-11-14-18-19.jpg" />
           <h2 className="search-title"> Science News </h2>
         </form>
       </div>

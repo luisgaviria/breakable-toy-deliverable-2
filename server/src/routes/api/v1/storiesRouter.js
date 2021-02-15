@@ -13,7 +13,6 @@ storiesRouter.use("/:storyId/reviews", storyReviewsRouter);
 storiesRouter.get("/", async (req, res) => {
   try {
     const stories = await Story.query();
-    debugger;
     const serializedStories = [];
     for (const story of stories) {
       const serializedStory = await StorySerializer.showData(story);
@@ -27,7 +26,6 @@ storiesRouter.get("/", async (req, res) => {
 
 storiesRouter.get("/:id", async (req, res) => {
   const storyId = req.params.id;
-
   try {
     const story = await Story.query().findOne({ apiId: storyId });
     return res.status(200).json({ story: story });
@@ -62,46 +60,58 @@ storiesRouter.post("/NewsApi", async (req, res) => {
   }
 });
 
-storiesRouter.post("/NewsApi", async (req, res) => {
-  let storiesToSendBack = [];
-  try {
-    const allTheStories = req.body;
-    debugger;
-    for (const singleStoryData of allTheStories) {
-      const currentStory = await Story.query().findOne({ title: singleStoryData.title });
-      delete singleStoryData.source;
-      if (!currentStory) {
-        const newStory = await Story.query().insertAndFetch(singleStoryData);
-        const serializedStory = await StorySerializer.showData(newStory);
-        storiesToSendBack.push(serializedStory);
-      }
-    }
-    debugger;
+// storiesRouter.post("/NewsApi", async (req, res) => {
+//   let storiesToSendBack = [];
+//   try {
+//     const allTheStories = req.body;
+//     debugger;
+//     for (const singleStoryData of allTheStories) {
+//       const currentStory = await Story.query().findOne({ title: singleStoryData.title });
+//       delete singleStoryData.source;
+//       if (!currentStory) {
+//         const newStory = await Story.query().insertAndFetch(singleStoryData);
+//         const serializedStory = await StorySerializer.showData(newStory);
+//         storiesToSendBack.push(serializedStory);
+//       }
+//     }
+//     debugger;
 
-    return res.status(201).json({ stories: storiesToSendBack });
-  } catch (error) {
-    if (error instanceof ValidationError) {
-      return res.status(422).json({ errors: error.data });
-    }
-    console.log(error);
-    return res.status(500).json({ errors: error });
-  }
-});
+//     return res.status(201).json({ stories: storiesToSendBack });
+//   } catch (error) {
+//     if (error instanceof ValidationError) {
+//       return res.status(422).json({ errors: error.data });
+//     }
+//     console.log(error);
+//     return res.status(500).json({ errors: error });
+//   }
+// });
 
 storiesRouter.post("/", async (req, res) => {
   const user = req.user.id;
-  const { body } = req;
-  const formInput = cleanUserInput(body);
-  formInput.userId = user;
+
+  const storyData = {
+    title: req.body.title.toString(),
+    description: req.body.description.toString(),
+    userId: user,
+    urlToImage: req.body.urlToImage ? req.body.urlToImage : null,
+    author: req.body.author ? req.body.author : null,
+    rating: req.body.rating ? req.body.rating : null,
+    apiId: new Date(),
+  };
+
+  console.log(storyData);
 
   try {
-    const newStory = await Story.query().insertAndFetch(formInput);
+    const newStory = await Story.query().insertAndFetch(storyData);
+    debugger;
     const serializedStory = await StorySerializer.showData(newStory);
     return res.status(201).json({ story: serializedStory });
   } catch (error) {
     if (error instanceof ValidationError) {
+      console.log(error);
       return res.status(422).json({ errors: error.data });
     }
+
     return res.status(500).json({ errors: error });
   }
 });

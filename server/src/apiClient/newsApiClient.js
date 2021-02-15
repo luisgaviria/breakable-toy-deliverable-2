@@ -31,6 +31,7 @@ class newsApiClient {
       const apiResponse = await got(url);
       const responseBody = apiResponse.body;
       const parsedBody = JSON.parse(responseBody);
+
       const allStories = parsedBody.articles.map((data) => {
         let id = data.publishedAt;
         const newStory = {

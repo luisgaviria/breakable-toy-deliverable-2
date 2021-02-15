@@ -20,8 +20,13 @@ const StoryShow = (props) => {
   });
 
   const getStory = async () => {
-    const storyId = props.match.params.id;
-    console.log(storyId);
+    let storyId = undefined;
+    if (props.match.params.id) {
+      storyId = props.match.params.id;
+    } else {
+      storyId = props.storyData.apiId;
+    }
+
     try {
       const response = await fetch(`/api/v1/stories/${storyId}`);
 
@@ -31,16 +36,33 @@ const StoryShow = (props) => {
         throw error;
       }
       const body = await response.json();
-      console.log(body);
       setStory(body.story);
     } catch (error) {
       console.error(`Err in fetch: ${error.message}`);
     }
   };
 
+  // const getReviews = async () => {
+  //   const storyId = props.match.params.id;
+  //   //integrate this review with front end.
+  //   try {
+  //     const response = await fetch(`/api/v1/stories/${parkId}`);
+  //     if (!response.ok) {
+  //       const errorMessage = `${response.status} (${response.statusText})`;
+  //       const error = new Error(errorMessage);
+  //       throw error;
+  //     }
+  //     const body = await response.json();
+  //     setPark(body.park);
+  //   } catch (error) {
+  //     console.error(`Err in fetch: ${error.message}`);
+  //   }
+  // };
+
   const postReview = async (newReviewData) => {
     try {
-      const storyId = await fetch(`/api/v1/stories/${storyId}/reviews`, {
+      const storyId = props.match.params.id;
+      const response = await fetch(`/api/v1/stories/${storyId}/reviews`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -59,6 +81,7 @@ const StoryShow = (props) => {
         }
       } else {
         const body = await response.json();
+        debugger;
         setStory({
           ...story,
           reviews: [...story.reviews, body.review],
@@ -81,21 +104,18 @@ const StoryShow = (props) => {
       <div className="image grid-container small-10 small-centered columns">
         <img className="showpage-pic" src={story.urlToImage} />
         <aside className="module">
-          <h3 className="showpage-title">{story.title}</h3>
-          <h5>
-            <span>
-              <h3 className="title-content">
-                {story.content}
+          <a target="_blank" href={story.url}>
+            <h3 className="showpage-title">{story.title}</h3>
+          </a>
 
-                <br />
-                {/* Average rating: {story.averageRating} */}
-                <br />
-              </h3>
-            </span>
+          <h5>
+            <span>{/* Average rating: {story.averageRating} */}</span>
           </h5>
           <br></br>
         </aside>
         <h5 id="story-show-description">{story.description}</h5>
+
+        <h6> {story.content}</h6>
       </div>
       <div className="review-comment-box">
         <NewReviewForm storyId={story.id} postReview={postReview} />

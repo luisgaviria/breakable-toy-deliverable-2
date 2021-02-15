@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-// import { Button } from "semantic-ui-react";
 
 import translateServerErrors from "../../services/translateServerErrors.js";
 import FormError from "./FormError.js";
+import StoryShow from "./StoryShow.js";
 
 const NewStoryForm = (props) => {
   const [newStory, setNewStory] = useState({
@@ -12,13 +12,14 @@ const NewStoryForm = (props) => {
     description: "",
     urlToImage: "",
     rating: "",
+    apiId: "3333333",
+    added: false,
   });
 
   const [errors, setErrors] = useState([]);
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const postStory = async (newStoryData) => {
-    debugger;
     try {
       const response = await fetch(`/api/v1/stories`, {
         method: "POST",
@@ -28,7 +29,7 @@ const NewStoryForm = (props) => {
 
         body: JSON.stringify(newStoryData),
       });
-      debugger;
+
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
@@ -40,14 +41,43 @@ const NewStoryForm = (props) => {
           throw error;
         }
       } else {
-        debugger;
-        setShouldRedirect(true);
+        // setShouldRedirect(true);
+        const body = await response.json();
+        setNewStory({
+          author: body.story.author ? body.story.author : "",
+          content: body.story.content ? body.story.content : "",
+          apiId: body.story.apiId,
+          description: body.story.description ? body.story.description : "",
+          publishedAt: body.story.publishedAt ? body.story.publishedAt : "",
+          rating: body.story.rating ? body.story.rating : "",
+          title: body.story.title ? body.story.title : "",
+          url: body.story.url ? body.story.url : "",
+          added: true,
+          urlToImage: body.story.urlToImage ? body.story.urlToImage : "",
+        });
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
-      console.log(error);
     }
   };
+
+  // const getNewStories = async () => {
+  //   try {
+  //     const response = await fetch(`api/v1/stories`);
+  //     if (!response.ok) {
+  //       const errorMessage = `${response.status} (${response.statusText})`;
+  //       const error = new Error(errorMessage);
+  //       throw error;
+  //     }
+  //     const NewStoryData = await response.json();
+  //     console.log(NewStoryData);
+
+  //     setParks(...parks, NPSArray);
+  //     postNPSParks(NPSArray);
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${err.message}`);
+  //   }
+  // };
 
   const handleInputChange = (event) => {
     setNewStory({
@@ -148,6 +178,18 @@ const NewStoryForm = (props) => {
           <input className="button" type="submit" value="Submit" />
         </div>
       </form>
+
+      {newStory.added ? (
+        <StoryShow
+          storyData={newStory}
+          // author={newStory.author}
+          // apiId="333333"
+          // title={newStory.title}
+          // description={newStory.description}
+          // urlToImage={newStory.urlToImage}
+          // rating={newStory.rating}
+        />
+      ) : null}
     </div>
   );
 };
