@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from "react";
 import StoryTile from "./StoryTile.js";
 import { withRouter } from "react-router";
-// import ReactPlayer from "react-player";
 
-const StoryList = (props) => {
+const ScienceList = (props) => {
   const [stories, setStories] = useState([]);
 
   const getStories = async () => {
     try {
-      const response = await fetch("/api/v1/stories");
-
+      const response = await fetch("/api/v1/science");
+      console.log(response);
+      // debugger;
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         const error = new Error(errorMessage);
         throw error;
       }
       const body = await response.json();
+      console.log(body);
       setStories(body.stories);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
   };
-  useEffect(() => {
-    // getStories();
-    // getScienceApiStories();
-    getNewsApiStories();
-  }, []);
 
   const postNewsApiStories = async (newStories) => {
     try {
@@ -54,22 +50,25 @@ const StoryList = (props) => {
     }
   };
 
-  const getNewsApiStories = async () => {
+  useEffect(() => {
+    // getStories();
+    getScienceApiStories();
+    postNewsApiStories();
+  }, []);
+
+  const getScienceApiStories = async () => {
     try {
-      const response = await fetch(`api/v1/NewsApi`);
+      const response = await fetch(`api/v1/NewsApi/science`);
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         const error = new Error(errorMessage);
         throw error;
       }
+
       const NewsData = await response.json();
-      NewsData.map((data) => {
-        data.userId = 2;
-      });
 
+      console.log(NewsData);
       setStories(...stories, NewsData);
-
-      postNewsApiStories(NewsData);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
@@ -88,7 +87,7 @@ const StoryList = (props) => {
       <div className="top-section">
         <form className="search-form">
           <img id="logo-img" src="https://i.postimg.cc/0y6wPc74/PHOTO-2021-02-11-14-18-19.jpg" />
-          <h1 className="search-title"> Main News </h1>
+          <h2 className="search-title"> Science News </h2>
         </form>
       </div>
       <div>
@@ -100,4 +99,4 @@ const StoryList = (props) => {
   );
 };
 
-export default withRouter(StoryList);
+export default withRouter(ScienceList);
