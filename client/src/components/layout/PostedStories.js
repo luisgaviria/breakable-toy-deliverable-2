@@ -86,11 +86,12 @@ const PostedList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
+          <img id="logo-img" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
           <h2 className="search-title"> Posted News </h2>
         </form>
       </div>
       <div>
-        <div id="each-park-tile">
+        <div id="each-story-tile">
           <div id="card-holder"> {storyListItems} </div>
         </div>
       </div>

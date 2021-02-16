@@ -17,6 +17,7 @@ import ScienceList from "./layout/ScienceList.js";
 import SportsList from "./layout/SportsList.js";
 import TechList from "./layout/TechList.js";
 import PostedStories from "./layout/PostedStories.js";
+import HomePage from "./layout/HomePage.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -33,6 +34,9 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
+        <Route exact path="/">
+          <HomePage user={currentUser} />
+        </Route>
         <Route exact path="/stories">
           <StoryList user={currentUser} />
         </Route>

@@ -16,6 +16,7 @@ const StoryShow = (props) => {
     urlToImage: "",
     rating: "",
     reviews: [],
+    id: "",
     averageRating: null,
   });
 
@@ -26,7 +27,6 @@ const StoryShow = (props) => {
     } else {
       storyId = props.storyData.apiId;
     }
-
     try {
       const response = await fetch(`/api/v1/stories/${storyId}`);
 
@@ -36,28 +36,11 @@ const StoryShow = (props) => {
         throw error;
       }
       const body = await response.json();
-      setStory(body.story);
+      await getReviews(body.story);
     } catch (error) {
       console.error(`Err in fetch: ${error.message}`);
     }
   };
-
-  // const getReviews = async () => {
-  //   const storyId = props.match.params.id;
-  //   //integrate this review with front end.
-  //   try {
-  //     const response = await fetch(`/api/v1/stories/${parkId}`);
-  //     if (!response.ok) {
-  //       const errorMessage = `${response.status} (${response.statusText})`;
-  //       const error = new Error(errorMessage);
-  //       throw error;
-  //     }
-  //     const body = await response.json();
-  //     setPark(body.park);
-  //   } catch (error) {
-  //     console.error(`Err in fetch: ${error.message}`);
-  //   }
-  // };
 
   const postReview = async (newReviewData) => {
     try {
@@ -81,7 +64,8 @@ const StoryShow = (props) => {
         }
       } else {
         const body = await response.json();
-        debugger;
+        console.log(body);
+        console.log(story);
         setStory({
           ...story,
           reviews: [...story.reviews, body.review],
@@ -95,31 +79,154 @@ const StoryShow = (props) => {
     getStory();
   }, []);
 
-  // const allTheReviews = story.reviews.map((review) => {
-  //   return <ReviewTile key={review.id} review={review} errors={errors} />;
-  // });
+  const getReviews = async (tempStory) => {
+    let storyId = undefined;
+    if (props.match.params.id) {
+      storyId = props.match.params.id;
+    } else {
+      storyId = props.storyData.apiId;
+    }
+    try {
+      const response = await fetch(`/api/v1/stories/${storyId}/reviews/${tempStory.id}`, {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      });
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json();
+          const newErrors = translateServerErrors(body.errors);
+          return setErrors(newErrors);
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
+        }
+      } else {
+        const body = await response.json();
+
+        setStory({
+          ...tempStory,
+          reviews: body.reviews,
+        });
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  const deleteReview = async (review) => {
+    try {
+      const reviewId = review.id;
+      const response = await fetch(`/api/v1/reviews/${reviewId}`, {
+        method: "DELETE",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      });
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json();
+          const newErrors = translateServerErrors(body.errors);
+          return setErrors(newErrors);
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
+        }
+      }
+      getReviews(story);
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  const updateReview = async (review) => {
+    try {
+      const reviewId = review.id;
+      const response = await fetch(`/api/v1/reviews/${reviewId}`, {
+        method: "PATCH",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(review),
+      });
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json();
+          const newErrors = translateServerErrors(body.errors);
+          return setErrors(newErrors);
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
+        }
+      } else {
+        getReviews(story);
+        setErrors({});
+        return;
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  let loggedInUser;
+  if (props.user == undefined) {
+    loggedInUser = { email: "guest" };
+  } else {
+    loggedInUser = props.user;
+  }
+
+  let allTheReviews = [];
+  if (Array.isArray(story.reviews) && story.reviews.length) {
+    allTheReviews = story.reviews.map((review) => {
+      return (
+        <ReviewTile
+          key={review.id}
+          deleteReview={() => deleteReview(review)}
+          updateReview={updateReview}
+          review={review}
+          errors={errors}
+          user={loggedInUser}
+        />
+      );
+    });
+  }
 
   return (
     <div className="image grid-container small-10 small-centered columns" id="image-container">
-      <div className="image grid-container small-10 small-centered columns">
-        <img className="showpage-pic" src={story.urlToImage} />
-        <aside className="module">
-          <a target="_blank" href={story.url}>
-            <h3 className="showpage-title">{story.title}</h3>
-          </a>
+      <div id="big-div">
+        <div className="image grid-container small-10 small-centered columns" id="image-div">
+          <img
+            className="showpage-pic"
+            src={
+              story.urlToImage ||
+              "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
+            }
+          />
+          <div className="module">
+            <div id="text-div">
+              <a target="_blank" href={story.url}>
+                <h3 className="showpage-title">{story.title}</h3>
+              </a>
 
-          <h5>
-            <span>{/* Average rating: {story.averageRating} */}</span>
-          </h5>
-          <br></br>
-        </aside>
-        <h5 id="story-show-description">{story.description}</h5>
+              <h5>
+                <span>{/* Average rating: {story.averageRating} */}</span>
+              </h5>
+              <br></br>
 
-        <h6> {story.content}</h6>
+              <h5 id="story-show-description">{story.description}</h5>
+
+              <h6 id="content"> {story.content}</h6>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="review-comment-box">
         <NewReviewForm storyId={story.id} postReview={postReview} />
-        {/* {allTheReviews} */}
+        {allTheReviews.length ? allTheReviews : null}
       </div>
     </div>
   );

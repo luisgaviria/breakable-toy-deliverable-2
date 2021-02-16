@@ -38,15 +38,20 @@ const SportsList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <img id="logo-img" src="https://i.postimg.cc/0y6wPc74/PHOTO-2021-02-11-14-18-19.jpg" />
+          <img id="logo-img" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
           <h2 className="search-title"> Sports News </h2>
         </form>
       </div>
       <div>
-        <div id="each-park-tile">
+        <div id="each-story-tile">
           <div id="card-holder"> {storyListItems} </div>
         </div>
       </div>
+      <footer>
+        <a href="https://github.com/luisgaviria" target="_blank">
+          Github link
+        </a>
+      </footer>
     </div>
   );
 };

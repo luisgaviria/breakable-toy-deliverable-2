@@ -60,7 +60,7 @@ const TopBar = ({ user }) => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/stories">Colombia</Link>
+                <Link to="/stories">Main Headlines</Link>
               </li>
               <li>
                 <Link to="/science">Science</Link>
@@ -75,7 +75,7 @@ const TopBar = ({ user }) => {
                 <Link to="/stories/new">Add your own story</Link>
               </li>
               <li>
-                <Link to="/stories/all">Posted News</Link>
+                <Link to="/stories/all">All the News</Link>
               </li>
             </ul>
           </div>

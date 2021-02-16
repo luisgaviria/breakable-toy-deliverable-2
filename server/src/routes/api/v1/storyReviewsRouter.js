@@ -7,9 +7,37 @@ import cleanUserInput from "../../../services/cleanUserInput.js";
 import StorySerializer from "../../serializer/StorySerializer.js";
 import ReviewSerializer from "../../serializer/ReviewSerializer.js";
 
+// wait for yarn to complete
+// check that `got` has been added to server/package.json
+// ensure `yarn.lock` has been generated
+// ensure node_modules (3) have been generated
+// ensure app runs locally
+// if all is well, push branch to github and merge with `main`
+// once `main` has been updated, push `main` to Heroku to update Heroku deploymentquick
+
 const storyReviewsRouter = new express.Router({ mergeParams: true });
 
+// storyReviewsRouter.get("/:storyId", async (req, res) => {
+//   try {
+//     const reviews = await Review.query().where({ storyId: req.params.storyId });
+
+//     const serializedReviews = [];
+//     for (const review of reviews) {
+//       const serializedReview = await ReviewSerializer.showData(review);
+//       serializedReviews.push(serializedReview);
+//     }
+//     // serializedParks.sort((a, b) => {
+//     //   return b.voteTotal - a.voteTotal;
+//     // });
+//     return res.status(200).json({ reviews: serializedReviews });
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(500).json({ errors: error });
+//   }
+// });
+
 storyReviewsRouter.get("/:storyId", async (req, res) => {
+  //here you use real id of story not this apiId
   try {
     const reviews = await Review.query().where({ storyId: req.params.storyId });
 
@@ -21,9 +49,9 @@ storyReviewsRouter.get("/:storyId", async (req, res) => {
     // serializedParks.sort((a, b) => {
     //   return b.voteTotal - a.voteTotal;
     // });
+
     return res.status(200).json({ reviews: serializedReviews });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ errors: error });
   }
 });
@@ -35,7 +63,7 @@ storyReviewsRouter.post("/", async (req, res) => {
   const storyId = req.params.storyId;
   const userId = req.user.id;
   const currentStory = await Story.query().findOne({ apiId: storyId });
-  console.log(currentStory);
+
   try {
     const newReview = await Review.query().insertAndFetch({
       rating,
@@ -52,7 +80,7 @@ storyReviewsRouter.post("/", async (req, res) => {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data });
     }
-    console.log(error);
+
     return res.status(500).json({ errors: error });
   }
 });
