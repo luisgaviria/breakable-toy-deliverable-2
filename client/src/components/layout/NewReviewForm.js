@@ -30,7 +30,7 @@ const NewReviewForm = (props) => {
 
   return (
     <div className="callout" id="park-review-form">
-      <h3>Add a review for this park</h3>
+      <h3>Add a review for this story</h3>
       <form onSubmit={handleSubmit}>
         <label>
           Rating:

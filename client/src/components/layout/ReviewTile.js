@@ -10,11 +10,17 @@ const ReviewTile = (props) => {
 
   const saveReview = (event) => {
     event.preventDefault();
+    console.log(review);
     props.updateReview(review);
   };
 
+  const deleteReviewHandler = (event) => {
+    event.preventDefault();
+    props.deleteReview(props.review);
+  };
+
   const handleInputChange = (event) => {
-    if (props.user !== props.review.user.email || props.user == "guest") {
+    if (props.user.email !== props.review.user.email || props.user == "guest") {
       return console.log("You cannot update this review");
     }
     event.preventDefault();
@@ -39,22 +45,22 @@ const ReviewTile = (props) => {
         <select name="rating" onChange={handleInputChange} value={review.rating}>
           <option value=" "></option>
           <option value={1}>1 Star</option>
-          <option value={1.5}>1.5 Stars</option>
+          {/* <option value={1.5}>1.5 Stars</option> */}
           <option value={2}>2 Stars </option>
-          <option value={2.5}>2.5 Stars </option>
+          {/* <option value={2.5}>2.5 Stars </option> */}
           <option value={3}>3 Stars </option>
-          <option value={3.5}>3.5 Stars </option>
+          {/* <option value={3.5}>3.5 Stars </option> */}
           <option value={4}>4 Stars </option>
-          <option value={4.5}>4.5 Stars </option>
+          {/* <option value={4.5}>4.5 Stars </option> */}
           <option value={5}>5 Stars </option>
         </select>
         <div className="button-group">
           <input type="text" name="comments" value={review.comments} onChange={handleInputChange} />
-          <div className={buttonClassName}>
-            <input type="button" className="button" value="Delete" onClick={deleteReviewHandler} />
+          <div>
+            <input type="button" className="none" value="Delete" onClick={deleteReviewHandler} />
           </div>
-          <div className={buttonClassName}>
-            <input type="button" className="button" value="Save Edit" onClick={saveReview} />
+          <div>
+            <input type="button" className="none" value="Save Edit" onClick={saveReview} />
           </div>
         </div>
       </form>

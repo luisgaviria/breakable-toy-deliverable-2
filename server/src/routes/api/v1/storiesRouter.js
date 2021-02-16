@@ -12,7 +12,8 @@ storiesRouter.use("/:storyId/reviews", storyReviewsRouter);
 
 storiesRouter.get("/", async (req, res) => {
   try {
-    const stories = await Story.query();
+    const stories = await Story.query().orderBy("publishedAt", "desc");
+    debugger;
     const serializedStories = [];
     for (const story of stories) {
       const serializedStory = await StorySerializer.showData(story);
@@ -39,7 +40,6 @@ storiesRouter.post("/NewsApi", async (req, res) => {
   let storiesToSendBack = [];
   try {
     const allTheStories = req.body;
-    debugger;
     for (const singleStoryData of allTheStories) {
       const currentStory = await Story.query().findOne({ title: singleStoryData.title });
       delete singleStoryData.source;
@@ -49,7 +49,6 @@ storiesRouter.post("/NewsApi", async (req, res) => {
         storiesToSendBack.push(serializedStory);
       }
     }
-
     return res.status(201).json({ stories: storiesToSendBack });
   } catch (error) {
     if (error instanceof ValidationError) {
@@ -74,7 +73,6 @@ storiesRouter.post("/NewsApi", async (req, res) => {
 //         storiesToSendBack.push(serializedStory);
 //       }
 //     }
-//     debugger;
 
 //     return res.status(201).json({ stories: storiesToSendBack });
 //   } catch (error) {
@@ -88,7 +86,6 @@ storiesRouter.post("/NewsApi", async (req, res) => {
 
 storiesRouter.post("/", async (req, res) => {
   const user = req.user.id;
-
   const storyData = {
     title: req.body.title.toString(),
     description: req.body.description.toString(),
@@ -98,12 +95,8 @@ storiesRouter.post("/", async (req, res) => {
     rating: req.body.rating ? req.body.rating : null,
     apiId: new Date(),
   };
-
-  console.log(storyData);
-
   try {
     const newStory = await Story.query().insertAndFetch(storyData);
-    debugger;
     const serializedStory = await StorySerializer.showData(newStory);
     return res.status(201).json({ story: serializedStory });
   } catch (error) {
@@ -111,7 +104,6 @@ storiesRouter.post("/", async (req, res) => {
       console.log(error);
       return res.status(422).json({ errors: error.data });
     }
-
     return res.status(500).json({ errors: error });
   }
 });
