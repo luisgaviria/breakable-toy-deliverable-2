@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ErrorList from "../ErrorList.js";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 const ReviewTile = (props) => {
   const [review, setReview] = useState({
@@ -10,7 +12,6 @@ const ReviewTile = (props) => {
 
   const saveReview = (event) => {
     event.preventDefault();
-    console.log(review);
     props.updateReview(review);
   };
 
@@ -39,29 +40,55 @@ const ReviewTile = (props) => {
 
   return (
     <div className="review-form-reviews">
-      <form>
+      <form id="review-form">
         <ErrorList errors={props.errors} />
         <h4>user email: {props.review.user.email}</h4>
         <select name="rating" onChange={handleInputChange} value={review.rating}>
           <option value=" "></option>
-          <option value={1}>1 Star</option>
+          <option value={5}>★★★★★</option>
           {/* <option value={1.5}>1.5 Stars</option> */}
-          <option value={2}>2 Stars </option>
+          <option value={4}>★★★★</option>
           {/* <option value={2.5}>2.5 Stars </option> */}
-          <option value={3}>3 Stars </option>
+          <option value={3}>★★★</option>
           {/* <option value={3.5}>3.5 Stars </option> */}
-          <option value={4}>4 Stars </option>
+          <option value={2}>★★</option>
           {/* <option value={4.5}>4.5 Stars </option> */}
-          <option value={5}>5 Stars </option>
+          <option value={1}>★</option>
         </select>
         <div className="button-group">
-          <input type="text" name="comments" value={review.comments} onChange={handleInputChange} />
-          <div>
-            <input type="button" className="none" value="Delete" onClick={deleteReviewHandler} />
-          </div>
-          <div>
-            <input type="button" className="none" value="Save Edit" onClick={saveReview} />
-          </div>
+          <TextField
+            id="filled-secondary"
+            label="Comments"
+            variant="filled"
+            color="secondary"
+            type="text"
+            name="comments"
+            onChange={handleInputChange}
+            value={review.comments}
+            fullWidth
+          />
+          {/* <input type="text" name="comments" value={review.comments} onChange={handleInputChange} /> */}
+          <Button
+            size="small"
+            color="primary"
+            variant="contained"
+            value="Delete"
+            onClick={deleteReviewHandler}
+          >
+            Delete
+          </Button>
+          {/* <input type="button" className="none" value="Delete" onClick={deleteReviewHandler} /> */}
+
+          <Button
+            size="small"
+            color="primary"
+            variant="contained"
+            value="Save Edit"
+            onClick={saveReview}
+          >
+            Save
+          </Button>
+          {/* <input type="button" className="none" value="Save Edit" onClick={saveReview} /> */}
         </div>
       </form>
     </div>

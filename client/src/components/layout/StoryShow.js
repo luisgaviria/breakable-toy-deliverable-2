@@ -3,6 +3,7 @@ import { Redirect, Route, useParams, withRouter } from "react-router-dom";
 import translateServerErrors from "../../services/translateServerErrors.js";
 import NewReviewForm from "./NewReviewForm.js";
 import ReviewTile from "./ReviewTile.js";
+import Grid from "@material-ui/core/Grid";
 
 const StoryShow = (props) => {
   const [errors, setErrors] = useState({});
@@ -64,8 +65,7 @@ const StoryShow = (props) => {
         }
       } else {
         const body = await response.json();
-        console.log(body);
-        console.log(story);
+
         setStory({
           ...story,
           reviews: [...story.reviews, body.review],
@@ -136,6 +136,12 @@ const StoryShow = (props) => {
           throw error;
         }
       }
+      const body = await response.json();
+
+      setStory({
+        ...story,
+        reviews: body.reviews,
+      });
       getReviews(story);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -163,7 +169,10 @@ const StoryShow = (props) => {
           throw error;
         }
       } else {
-        getReviews(story);
+        setStory({
+          ...story,
+          reviews: story.reviews,
+        });
         setErrors({});
         return;
       }
@@ -207,23 +216,26 @@ const StoryShow = (props) => {
             }
           />
           <div className="module">
-            <div id="text-div">
-              <a target="_blank" href={story.url}>
-                <h3 className="showpage-title">{story.title}</h3>
-              </a>
+            <Grid container id="text-div" direction="column" justify="flex" alignItems="center">
+              <div id="text-div">
+                <a target="_blank" href={story.url}>
+                  <h3 className="showpage-title">{story.title}</h3>
+                </a>
 
-              <h5>
-                <span>{/* Average rating: {story.averageRating} */}</span>
-              </h5>
-              <br></br>
+                <h5>
+                  <span>{/* Average rating: {story.averageRating} */}</span>
+                </h5>
+                <br></br>
 
-              <h5 id="story-show-description">{story.description}</h5>
+                <h5 id="story-show-description">{story.description}</h5>
 
-              <h6 id="content"> {story.content}</h6>
-            </div>
+                <h6 id="content"> {story.content}</h6>
+              </div>
+            </Grid>
           </div>
         </div>
       </div>
+
       <div className="review-comment-box">
         <NewReviewForm storyId={story.id} postReview={postReview} />
         {allTheReviews.length ? allTheReviews : null}

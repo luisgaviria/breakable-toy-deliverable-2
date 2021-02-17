@@ -16,6 +16,11 @@
   tab-size: 4;
 }
 
+#review-form {
+  margin-left: 18%;
+  margin-right: 17%;
+}
+
 // #headline {
 //   justify-content: center;
 //   display: flex;
@@ -45,6 +50,10 @@
 //   display: flex;
 //   // background-image: url("https://thumbs.dreamstime.com/b/abstract-blue-red-watercolor-white-background-color-splashing-paper-hand-drawn-illustration-139441397.jpg'");
 // }
+
+#star-id {
+  display: inline;
+}
 
 .search-title {
   font-family: "Bitter", serif;
@@ -156,14 +165,14 @@
   height: 30vh;
   justify-content: center;
   display: flex;
-  margin-left: 27%;
+  margin-left: 22%;
 }
 
 #image-container {
   background-position: center;
 
   background-size: 100% 100%;
-  background-color: rgba(185, 177, 177, 0.09);
+  background-color: rgba(204, 202, 203, 0.377);
   // background-image: url("https://thumbs.dreamstime.com/b/abstract-blue-red-watercolor-white-background-color-splashing-paper-hand-drawn-illustration-139441397.jpg'");
 }
 
@@ -175,10 +184,17 @@
 
 #park-review-form {
   border-radius: 2%;
-  margin-top: 8%;
+  margin-top: 10%;
   margin-bottom: 1%;
   margin-left: 17%;
   margin-right: 15%;
+}
+
+#story-form-id {
+  border-radius: 2%;
+  margin-top: 2%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .showpage-title {
@@ -204,7 +220,7 @@
 #text-div {
   // border: 3px solid blue;
   margin-top: 1%;
-  margin-left: 3%;
+  margin-left: -5%;
   width: 73% !important;
   font-size: 1vw;
   height: 27vh;

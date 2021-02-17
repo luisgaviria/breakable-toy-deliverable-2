@@ -4,6 +4,9 @@ import { Redirect } from "react-router-dom";
 import translateServerErrors from "../../services/translateServerErrors.js";
 import FormError from "./FormError.js";
 import StoryShow from "./StoryShow.js";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
 
 const NewStoryForm = (props) => {
   const [newStory, setNewStory] = useState({
@@ -113,69 +116,117 @@ const NewStoryForm = (props) => {
         <div className="row">
           <label className="medium-6 columns">
             Author:
-            <input
+            <TextField
+              id="filled-secondary"
+              label="Author"
+              variant="filled"
+              color="secondary"
               type="text"
               name="author"
               placeholder="Author"
               onChange={handleInputChange}
               value={newStory.author}
+              fullWidth
             />
+            {/* <input
+              type="text"
+              name="author"
+              placeholder="Author"
+              onChange={handleInputChange}
+              value={newStory.author}
+            /> */}
             <FormError error={errors.author} />
           </label>
 
           <label className="medium-6 columns">
             Title:
-            <input
+            <TextField
+              id="filled-secondary"
+              label="Title"
+              variant="filled"
+              color="secondary"
+              type="text"
+              name="title"
+              onChange={handleInputChange}
+              value={newStory.title}
+              fullWidth
+            />
+            {/* <input
               type="text"
               name="title"
               placeholder="title"
               onChange={handleInputChange}
               value={newStory.title}
-            />
+            /> */}
             <FormError error={errors.content} />
           </label>
         </div>
         <label className="medium-6 columns">
           Description:
-          <input
+          <TextField
+            id="filled-secondary"
+            label="Description"
+            variant="filled"
+            color="secondary"
+            type="text"
+            name="description"
+            onChange={handleInputChange}
+            value={newStory.description}
+            fullWidth
+          />
+          {/* <input
             type="text"
             name="description"
             placeholder="Description"
             onChange={handleInputChange}
             value={newStory.description}
-          />
+          /> */}
         </label>
 
         <label>
           Rating:
-          <select name="rating" onChange={handleInputChange} value={newStory.rating}>
+          <select label="Rating" name="rating" onChange={handleInputChange} value={newStory.rating}>
             <option value=" "></option>
-            <option value="1">1 Star</option>
-            <option value="1.5">1.5 Stars</option>
-            <option value="2">2 Stars </option>
-            <option value="2.5">2.5 Stars </option>
-            <option value="3">3 Stars </option>
-            <option value="3.5">3.5 Stars </option>
-            <option value="4">4 Stars </option>
-            <option value="4.5">4.5 Stars </option>
-            <option value="5">5 Stars </option>
+            <option value="5">★★★★★</option>
+            {/* <option value="1.5">1.5 Stars</option> */}
+            <option value="4">★★★★ </option>
+            {/* <option value="2.5">2.5 Stars </option> */}
+            <option value="3">★★★ </option>
+            {/* <option value="3.5">3.5 Stars </option> */}
+            <option value="2">★★ </option>
+            {/* <option value="4.5">4.5 Stars </option> */}
+            <option value="1">★ </option>
           </select>
           <FormError error={errors.rating} />
         </label>
 
         <label>
           Picture:
-          <input
+          <TextField
+            id="filled-secondary"
+            label="Please enter complete URL"
+            variant="filled"
+            color="secondary"
+            type="text"
+            name="urlToImage"
+            onChange={handleInputChange}
+            value={newStory.urlToImage}
+            fullWidth
+          />
+          {/* <input
             type="text"
             name="urlToImage"
             placeholder="Please enter complete URL"
             onChange={handleInputChange}
             value={newStory.urlToImage}
-          />
+          /> */}
         </label>
 
-        <div className="button-group">
-          <input className="button" type="submit" value="Submit" />
+        <div>
+          {/* <input className="button" type="submit" value="Submit" /> */}
+          <Button size="small" color="primary" variant="contained" type="submit" value="Submit">
+            Submit
+          </Button>
         </div>
       </form>
 
