@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 
 const StoryTile = (props) => {
   const { apiId, title, description, url, urlToImage, author } = props.storyData;
-  // if (urlToImage === null) {
-  //   urlToImage =
-  //     "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png";
-  // }
 
   return (
     <div className="tile-container">

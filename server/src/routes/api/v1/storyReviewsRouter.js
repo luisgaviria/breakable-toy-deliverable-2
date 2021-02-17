@@ -7,14 +7,6 @@ import cleanUserInput from "../../../services/cleanUserInput.js";
 import StorySerializer from "../../serializer/StorySerializer.js";
 import ReviewSerializer from "../../serializer/ReviewSerializer.js";
 
-// wait for yarn to complete
-// check that `got` has been added to server/package.json
-// ensure `yarn.lock` has been generated
-// ensure node_modules (3) have been generated
-// ensure app runs locally
-// if all is well, push branch to github and merge with `main`
-// once `main` has been updated, push `main` to Heroku to update Heroku deploymentquick
-
 const storyReviewsRouter = new express.Router({ mergeParams: true });
 
 // storyReviewsRouter.get("/:storyId", async (req, res) => {
@@ -37,7 +29,6 @@ const storyReviewsRouter = new express.Router({ mergeParams: true });
 // });
 
 storyReviewsRouter.get("/:storyId", async (req, res) => {
-  //here you use real id of story not this apiId
   try {
     const reviews = await Review.query().where({ storyId: req.params.storyId });
 

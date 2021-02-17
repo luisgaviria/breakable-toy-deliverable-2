@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
           id="main-picture"
         ></img>
       </div>
+      
 
       <img
         src="https://codata.org/wp-content/uploads/2020/10/if_open-science.png"

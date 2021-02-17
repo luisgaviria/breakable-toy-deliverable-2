@@ -22,8 +22,6 @@ const StoryList = (props) => {
     }
   };
   useEffect(() => {
-    // getStories();
-    // getScienceApiStories();
     getNewsApiStories();
   }, []);
 

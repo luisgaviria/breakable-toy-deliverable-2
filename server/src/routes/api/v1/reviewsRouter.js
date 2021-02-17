@@ -3,7 +3,6 @@ import objection from "objection";
 const { ValidationError } = objection;
 
 import Review from "../../../models/Review.js";
-import StorySerializer from "../../serializer/StorySerializer.js";
 
 const reviewsRouter = new express.Router();
 
@@ -32,8 +31,6 @@ reviewsRouter.patch("/:reviewId", async (req, res) => {
     const review = await Review.query()
       .patch({ comments: comments, rating: rating })
       .where("id", "=", reviewId);
-    // const story = await review.$relatedQuery("story");
-    // const serializedStory = await StorySerializer.showDetails(story);
 
     return res.status(201).json({ review: review });
   } catch (error) {
