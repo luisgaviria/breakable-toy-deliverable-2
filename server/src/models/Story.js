@@ -40,7 +40,7 @@ class Story extends unique(Model) {
       content: { type: "string" },
       publishedAt: { type: "string" },
       title: { type: "string", minLength: 1, maxLength: 300 },
-      description: { type: "string", minLength: 1, maxLength: 300 },
+      description: { type: "string", minLength: 1 },
       rating: { type: ["string", "float"] },
       url: { type: "string" },
       urlToImage: { type: "string" },

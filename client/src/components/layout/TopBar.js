@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { TopbarData } from "./TopbarData.js";
+
+// import Link from "@material-ui/core/Link";
+// import AppBar from "@material-ui/core/AppBar";
+// import Toolbar from "@material-ui/core/Toolbar";
+// import IconButton from "@material-ui/core/IconButton";
+// import Typography from "@material-ui/core/Typography";
+// import InputBase from "@material-ui/core/InputBase";
+// import { fade, makeStyles } from "@material-ui/core/styles";
+
+// import SearchIcon from "@material-ui/icons/Search";
 
 const TopBar = ({ user }) => {
-  const [sideBar, setSideBar] = useState(false);
-
-  const showSideBar = () => setSideBar(!sideBar);
+  // const classes = useStyles();
 
   const unauthenticatedListItems = [
     <li key="sign-in" className="button" id="sign-out">
@@ -28,36 +33,48 @@ const TopBar = ({ user }) => {
   ];
 
   return (
+    // <div className={classes.root}>
+    //   <AppBar position="static">
+    //     <Toolbar>
+    //       <IconButton
+    //         edge="start"
+    //         className={classes.menuButton}
+    //         color="inherit"
+    //         aria-label="open drawer"
+    //       ></IconButton>
+    //       <Typography className={classes.title} variant="h6" noWrap>
+    //         Material-UI
+    //       </Typography>
+    //       <div className={classes.search}>
+    //         <div className={classes.searchIcon}></div>
+    //         <InputBase
+    //           placeholder="Search…"
+    //           classes={{
+    //             root: classes.inputRoot,
+    //             input: classes.inputInput,
+    //           }}
+    //           inputProps={{ "aria-label": "search" }}
+    //         />
+    //       </div>
+    //     </Toolbar>
+    //   </AppBar>
+    // </div>
+
     <div className="navbar">
       <div className="top-bar" id="top-id">
         <div className="top-bar-left">
-          {/* <div className="menu-bars">
-            <FaIcons.FaBars onClick={showSideBar} />
-          </div> */}
-
-          <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
+          {/* <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items">
-              {/* <li className="navbar-toggle">
-                <Link to="#" className="menu-bars">
-                  <AiIcons.AiOutlineClose />
-                </Link>
-              </li> */}
-              {/* {TopbarData.map((item, index) => {
-                return (
-                  <li key={index} className={item.cName}>
-                    <Link to={item.path}>
-                      {item.icon}
-                      <span>{item.title}</span>
-                    </Link>
-                  </li>
-                );
-              })} */}
+
             </ul>
-          </nav>
+          </nav> */}
           <div className="menu">
             <ul className="menu" id="ul-top-bar">
               <li>
                 <Link to="/">Home</Link>
+                {/* <Link href="/" component="button" variant="body2">
+                  Home
+                </Link> */}
               </li>
               <li>
                 <Link to="/stories">Main Headlines</Link>

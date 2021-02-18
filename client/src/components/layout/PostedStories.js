@@ -22,57 +22,9 @@ const PostedList = (props) => {
     }
   };
 
-  // const postNewsApiStories = async (newStories) => {
-  //   try {
-  //     const response = await fetch(`/api/v1/stories/NewsApi`, {
-  //       method: "POST",
-  //       headers: new Headers({
-  //         "Content-Type": "application/json",
-  //       }),
-  //       body: JSON.stringify(newStories),
-  //     });
-  //     if (!response.ok) {
-  //       if (response.status === 422) {
-  //         const body = await response.json();
-  //         const newErrors = translateServerErrors(body.errors);
-  //         return setErrors(newErrors);
-  //       } else {
-  //         const errorMessage = `${response.status} (${response.statusText})`;
-  //         const error = new Error(errorMessage);
-  //         throw error;
-  //       }
-  //     } else {
-  //       getStories();
-  //     }
-  //   } catch (error) {
-  //     console.error(`Error in fetch: ${error.message}`);
-  //   }
-  // };
-
   useEffect(() => {
-    // getStories();
     getStories();
-    // postNewsApiStories();
   }, []);
-
-  // const getScienceApiStories = async () => {
-  //   // debugger;
-  //   try {
-  //     const response = await fetch(`api/v1/NewsApi/science`);
-  //     if (!response.ok) {
-  //       const errorMessage = `${response.status} (${response.statusText})`;
-  //       const error = new Error(errorMessage);
-  //       throw error;
-  //     }
-
-  //     const NewsData = await response.json();
-  //     // debugger;
-  //     console.log(NewsData);
-  //     setStories(...stories, NewsData);
-  //   } catch (error) {
-  //     console.error(`Error in fetch: ${error.message}`);
-  //   }
-  // };
 
   const storyListItems = stories.map((storyItem) => {
     if (storyItem.id) {
@@ -87,7 +39,7 @@ const PostedList = (props) => {
       <div className="top-section">
         <form className="search-form">
           <img id="logo-img" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
-          <h2 className="search-title"> Posted News </h2>
+          <h2 className="search-title"> All the News </h2>
         </form>
       </div>
       <div>
