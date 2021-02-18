@@ -4,8 +4,38 @@ import translateServerErrors from "../../services/translateServerErrors.js";
 import NewReviewForm from "./NewReviewForm.js";
 import ReviewTile from "./ReviewTile.js";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    overflow: "hidden",
+    padding: theme.spacing(0, 3),
+  },
+  paper: {
+    maxWidth: 900,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+  },
+  hero: {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://i.postimg.cc/VvDMszs6/PHOTO-2021-02-11-14-19-04.jpg")`,
+    height: "1000px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#fff",
+    fontSize: "4rem",
+  },
+}));
 
 const StoryShow = (props) => {
+  const classes = useStyles();
   const [errors, setErrors] = useState({});
   const [story, setStory] = useState({
     author: "",
@@ -37,6 +67,7 @@ const StoryShow = (props) => {
         throw error;
       }
       const body = await response.json();
+      console.log(body.story);
       await getReviews(body.story);
     } catch (error) {
       console.error(`Err in fetch: ${error.message}`);
@@ -77,6 +108,7 @@ const StoryShow = (props) => {
   };
   useEffect(() => {
     getStory();
+    console.log(story.description);
   }, []);
 
   const getReviews = async (tempStory) => {
@@ -205,35 +237,54 @@ const StoryShow = (props) => {
   }
 
   return (
-    <div className="image grid-container small-10 small-centered columns" id="image-container">
-      <div id="big-div">
-        <div className="image grid-container small-10 small-centered columns" id="image-div">
-          <img
-            className="showpage-pic"
-            src={
-              story.urlToImage ||
-              "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
-            }
-          />
-          <div className="module">
-            <Grid container id="text-div" direction="column" justify="flex" alignItems="center">
-              <div id="text-div">
-                <a target="_blank" href={story.url}>
-                  <h3 className="showpage-title">{story.title}</h3>
-                </a>
+    <div className="background">
+      {/* <div id="big-div"> */}
+      {/* <div className="image grid-container small-10 small-centered columns"> */}
 
-                <h5>
-                  <span>{/* Average rating: {story.averageRating} */}</span>
-                </h5>
-                <br></br>
+      <div className="module">
+        <Grid container direction="column" alignItems="center">
+          <div>
+            <img
+              className="image-id"
+              src={
+                story.urlToImage ||
+                "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
+              }
+            />
+            <a className="title-class" target="_blank" href={story.url}>
+              <Typography gutterBottom align="center" color="primary">
+                <div id="title-id">{story.title}</div>
+              </Typography>
+              {/* <h3 className="showpage-title">{story.title}</h3> */}
+            </a>
 
-                <h5 id="story-show-description">{story.description}</h5>
+            <h5>
+              <span>{/* Average rating: {story.averageRating} */}</span>
+            </h5>
+            <br></br>
 
-                <h6 id="content"> {story.content}</h6>
-              </div>
-            </Grid>
+            <Paper className={classes.paper} id="show-paper">
+              <Grid container spacing={2}>
+                <Grid item>
+                  <Typography variant="h6" lg gutterBottom align="center">
+                    {story.description}
+                  </Typography>
+                </Grid>
+                <Grid item md>
+                  <Typography variant="h7" lg gutterBottom align="center">
+                    <div textAlign="center">{story.content}</div>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Paper>
+
+            {/* <h5 id="story-show-description">{story.description}</h5> */}
+
+            {/* <h6 id="content"> {story.content}</h6> */}
           </div>
-        </div>
+        </Grid>
+        {/* </div> */}
+        {/* </div> */}
       </div>
 
       <div className="review-comment-box">

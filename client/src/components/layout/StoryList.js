@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import StoryTile from "./StoryTile.js";
 import { withRouter } from "react-router";
-// import ReactPlayer from "react-player";
+
+import Grid from "@material-ui/core/Grid";
 
 const StoryList = (props) => {
   const [stories, setStories] = useState([]);
@@ -92,14 +93,20 @@ const StoryList = (props) => {
       </div>
       <div>
         <div id="each-park-tile">
-          <div id="card-holder"> {storyListItems} </div>
+          <div id="card-holder">
+            <Grid container spacing={3}>
+              <Grid item xs={"auto"} sm={"auto"} md={"auto"} lg={"auto"}>
+                {storyListItems}
+              </Grid>
+            </Grid>
+          </div>
         </div>
       </div>
-      <footer>
+      {/* <footer>
         <a href="https://github.com/luisgaviria" target="_blank">
           Github link
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
 };

@@ -38,43 +38,9 @@ const ScienceShow = (props) => {
     }
   };
 
-  // const postReview = async (newReviewData) => {
-  //   try {
-  //     const storyId = await fetch(`/api/v1/stories/${storyId}/reviews`, {
-  //       method: "POST",
-  //       headers: new Headers({
-  //         "Content-Type": "application/json",
-  //       }),
-  //       body: JSON.stringify(newReviewData),
-  //     });
-  //     if (!response.ok) {
-  //       if (response.status === 422) {
-  //         const body = await response.json();
-  //         const newErrors = translateServerErrors(body.errors);
-  //         return setErrors(newErrors);
-  //       } else {
-  //         const errorMessage = `${response.status} (${response.statusText})`;
-  //         const error = new Error(errorMessage);
-  //         throw error;
-  //       }
-  //     } else {
-  //       const body = await response.json();
-  //       setStory({
-  //         ...story,
-  //         reviews: [...story.reviews, body.review],
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error(`Error in fetch: ${error.message}`);
-  //   }
-  // };
   useEffect(() => {
     getStory();
   }, []);
-
-  // const allTheReviews = story.reviews.map((review) => {
-  //   return <ReviewTile key={review.id} review={review} errors={errors} />;
-  // });
 
   return (
     <div className="image grid-container small-10 small-centered columns" id="image-container">
@@ -97,10 +63,6 @@ const ScienceShow = (props) => {
         </aside>
         <p id="story-show-description">{story.description}</p>
       </div>
-      {/* <div className="review-comment-box"> */}
-      {/* <NewReviewForm storyId={story.id} postReview={postReview} />
-        {allTheReviews}
-      </div> */}
     </div>
   );
 };

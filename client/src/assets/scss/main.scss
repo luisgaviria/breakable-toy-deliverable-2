@@ -16,9 +16,35 @@
   tab-size: 4;
 }
 
+#logo-home {
+  left: 5%;
+  top: 3.5%;
+  margin-left: auto;
+  position: absolute;
+}
+
+#form-id {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.title-uraba {
+  text-align: center;
+  font-weight: bold;
+  font-size: 100pt;
+}
+
+#home-title {
+  margin-top: -40%;
+  font-family: "Bitter", serif;
+  font-size: 100px;
+  font-weight: bolder;
+}
+
 #review-form {
-  margin-left: 18%;
-  margin-right: 17%;
+  margin-top: 10%;
+  align-items: center;
 }
 
 // #headline {
@@ -50,10 +76,6 @@
 //   display: flex;
 //   // background-image: url("https://thumbs.dreamstime.com/b/abstract-blue-red-watercolor-white-background-color-splashing-paper-hand-drawn-illustration-139441397.jpg'");
 // }
-
-#star-id {
-  display: inline;
-}
 
 .search-title {
   font-family: "Bitter", serif;
@@ -110,20 +132,18 @@
   font-size: 80%;
 }
 
-.grid-container {
-  margin-top: 30px;
-}
+// .grid-container {
+//   margin-top: 30px;
+// }
 
 #logo-img {
   display: inline-flex;
-  width: auto;
-  height: auto;
-  margin-top: 1%;
+  margin-top: 0%;
   margin-left: 5%;
   margin-bottom: 6%;
   align-items: left;
   border-radius: 15%;
-  height: 70%;
+  height: 10%;
 }
 
 .tile-image {
@@ -137,57 +157,60 @@
   height: 25vh !important;
 }
 
-.showpage-pic {
-  flex: 1 !important;
-  margin-top: 1%;
-  // display: block;
+// .showpage-pic {
+//   flex: 1 !important;
+//   margin-top: 1%;
+//   // display: block;
+//   justify-content: center;
+//   margin-left: 37%;
+//   border-radius: 1%;
+//   // border: 2px solid blue;
+//   width: 50% !important;
+//   height: 38vh !important;
+// }
 
-  // align-items: center;
-  border-radius: 1%;
-  // border: 2px solid blue;
-  width: 43% !important;
-  height: 36vh !important;
-}
+// #image-div {
+//   // border: solid 0.1rem rgb(151, 150, 150);
+//   // border-radius: 1%;
+//   // // margin-top: 2%;
+//   // // margin-left: 20%;
+//   // // margin-right: 20%;
+//   // // margin-bottom: 2%;
+//   // justify-content: flex-start;
+//   // border: 2px solid red;
+//   // flex-wrap: wrap;
+//   // flex-direction: row !important;
+//   // display: flex;
+//   // // width: 100vw !important;
+//   // height: 30vh;
+//   // align-items: center;
+//   // justify-content: center;
+//   // display: flex;
+//   // margin-left: 15%;
+// }
 
-#image-div {
-  // border: solid 0.1rem rgb(151, 150, 150);
-  // border-radius: 1%;
-  // // margin-top: 2%;
-  // // margin-left: 20%;
-  // // margin-right: 20%;
-  // // margin-bottom: 2%;
-  // justify-content: flex-start;
-  // border: 2px solid red;
-  // flex-wrap: wrap;
-  // flex-direction: row !important;
-  // display: flex;
-  // // width: 100vw !important;
-  height: 30vh;
-  justify-content: center;
-  display: flex;
-  margin-left: 22%;
-}
+// #image-container {
+//   background-position: center;
 
-#image-container {
-  background-position: center;
+//   background-size: 100% 100%;
+//   background-color: rgba(204, 202, 203, 0.377);
+//   // background-image: url("https://thumbs.dreamstime.com/b/abstract-blue-red-watercolor-white-background-color-splashing-paper-hand-drawn-illustration-139441397.jpg'");
+// }
 
-  background-size: 100% 100%;
-  background-color: rgba(204, 202, 203, 0.377);
-  // background-image: url("https://thumbs.dreamstime.com/b/abstract-blue-red-watercolor-white-background-color-splashing-paper-hand-drawn-illustration-139441397.jpg'");
-}
-
-.grid-container {
-  display: inline-flexbox;
-  margin-top: 1%;
-  border-radius: 1%;
-}
+// .grid-container {
+//   // display: inline-flexbox;
+//   margin-top: 1%;
+//   border-radius: 1%;
+// }
 
 #park-review-form {
   border-radius: 2%;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 1%;
-  margin-left: 17%;
-  margin-right: 15%;
+  width: 50%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #story-form-id {
@@ -202,8 +225,10 @@
   color: rgb(52, 97, 180);
   font-size: 1.3vw;
   font-weight: bold;
-  align-items: center;
+
+  margin-right: 30%;
   width: 100%;
+  margin-bottom: 2px;
   // border: 3px solid yellow;
   height: auto;
   text-align: center;
@@ -220,31 +245,79 @@
 #text-div {
   // border: 3px solid blue;
   margin-top: 1%;
-  margin-left: -5%;
-  width: 73% !important;
+  margin-left: 1%;
+  width: 110% !important;
   font-size: 1vw;
   height: 27vh;
 }
 
 #content {
-  margin-top: -2%;
+  margin-left: 13%;
   color: black;
-  margin-left: 2%;
-  font-size: 0.89vw;
-  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1vw;
+  width: 70%;
 }
+
+// .title-class {
+//   margin-right: 300px !important;
+//   margin-left: 300px !important;
+//   width: 100px !important;
+// }
+
+#title-id {
+  width: 100%;
+  font-weight: bold;
+  font-size: 20pt;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.background {
+  width: 80%;
+  background-color: rgba(203, 199, 204, 0.575);
+  margin-top: 1%;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1%;
+}
+
+#show-paper {
+  margin-top: -2%;
+  margin-bottom: 2%;
+  width: 50%;
+}
+.image-id {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 2% !important;
+  // display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 60%;
+  height: 40vh;
+}
+
+// #image-div-show {
+//   margin-top: 1%;
+// }
 
 #story-show-description {
   color: black;
   font-size: 1vw;
-  align-items: center;
+  // align-items: center;
   height: auto;
   text-align: center;
-  margin-top: -3.7vh;
-  // margin-bottom: 10pt;
+  margin-top: 1vh;
+  // margin-left: 9%;
+  margin-bottom: 10pt;
   // margin-left: 15%;
   // margin-right: 15%;
-  width: 100%;
+  width: auto;
   // border: solid green 3px;
 }
 
