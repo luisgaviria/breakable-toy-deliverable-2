@@ -41,11 +41,11 @@ const HomePage = () => {
           <ReactPlayer url="https://www.youtube.com/watch?v=s4KunkGyWvU&ab_channel=URABATELEVISION" />
         </div> */}
       </div>
-      <img
+      {/* <img
         src="https://codata.org/wp-content/uploads/2020/10/if_open-science.png"
         id="science-picture"
       ></img>
-      <img src="https://oaklandtech.com/staff/files/2016/09/sports.jpg" id="sports-picture"></img>{" "}
+      <img src="https://oaklandtech.com/staff/files/2016/09/sports.jpg" id="sports-picture"></img>{" "} */}
     </div>
   );
 };
