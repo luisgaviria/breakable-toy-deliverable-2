@@ -34,32 +34,18 @@ const HomePage = () => {
   const classes = useStyles();
   return (
     <div className={classes.hero}>
-      {/* <Box className={classes.hero}></Box> */}
       <img id="logo-home" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
       <h1 className="title-uraba">Urabá Television</h1>
       <div id="form-id">
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        </form>
         {/* <div id="youtube-id">
           <ReactPlayer url="https://www.youtube.com/watch?v=s4KunkGyWvU&ab_channel=URABATELEVISION" />
         </div> */}
       </div>
-
-      {/* <p id="home-main-div">Hello there</p>
-      <div id="headline">
-        <img
-          src="https://ak.picdn.net/shutterstock/videos/6137654/thumb/1.jpg"
-          id="main-picture"
-        ></img>
-      </div>
-      
-
       <img
         src="https://codata.org/wp-content/uploads/2020/10/if_open-science.png"
         id="science-picture"
       ></img>
-      <img src="https://oaklandtech.com/staff/files/2016/09/sports.jpg" id="sports-picture"></img> */}
+      <img src="https://oaklandtech.com/staff/files/2016/09/sports.jpg" id="sports-picture"></img>{" "}
     </div>
   );
 };
