@@ -238,55 +238,46 @@ const StoryShow = (props) => {
 
   return (
     <div className="background">
-      {/* <div id="big-div"> */}
-      {/* <div className="image grid-container small-10 small-centered columns"> */}
-
       <div className="module">
         <Grid container direction="column" alignItems="center">
           <div>
-            <img
-              className="image-id"
-              src={
-                story.urlToImage ||
-                "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
-              }
-            />
-            <a className="title-class" target="_blank" href={story.url}>
-              <Typography gutterBottom align="center" color="primary">
-                <div id="title-id">{story.title}</div>
-              </Typography>
-              {/* <h3 className="showpage-title">{story.title}</h3> */}
-            </a>
-
             <h5>
               <span>{/* Average rating: {story.averageRating} */}</span>
             </h5>
-            <br></br>
 
             <Paper className={classes.paper} id="show-paper">
+              <Grid>
+                <img
+                  className="image-id"
+                  src={
+                    story.urlToImage ||
+                    "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
+                  }
+                />
+              </Grid>
               <Grid container spacing={2}>
+                <Grid>
+                  <a className="title-class" target="_blank" href={story.url}>
+                    <div id="title-id">{story.title}</div>
+                  </a>
+                </Grid>
                 <Grid item>
-                  <Typography variant="h6" lg gutterBottom align="center">
-                    {story.description}
+                  <Typography variant="h6" gutterBottom align="center">
+                    <div id="show-description">{story.description}</div>
                   </Typography>
                 </Grid>
                 <Grid item md>
-                  <Typography variant="h7" lg gutterBottom align="center">
-                    <div textAlign="center">{story.content}</div>
+                  <Typography variant="h6" gutterBottom align="center">
+                    <div textalign="center" id="description">
+                      {story.content}
+                    </div>
                   </Typography>
                 </Grid>
               </Grid>
             </Paper>
-
-            {/* <h5 id="story-show-description">{story.description}</h5> */}
-
-            {/* <h6 id="content"> {story.content}</h6> */}
           </div>
         </Grid>
-        {/* </div> */}
-        {/* </div> */}
       </div>
-
       <div className="review-comment-box">
         <NewReviewForm storyId={story.id} postReview={postReview} />
         {allTheReviews.length ? allTheReviews : null}

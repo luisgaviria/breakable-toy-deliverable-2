@@ -57,7 +57,7 @@ const NewReviewForm = (props) => {
         })}
       </div> */}
 
-      <h3>Add a review for this story</h3>
+      <h3 id="review-header">Add a review for this story</h3>
       <form onSubmit={handleSubmit}>
         <label>
           Rating:

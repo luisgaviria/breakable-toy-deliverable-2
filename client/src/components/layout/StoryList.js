@@ -85,10 +85,15 @@ const StoryList = (props) => {
 
   return (
     <div>
-      <div className="top-section">
+      <div
+        className="top-section"
+        // style={{
+        //   backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2yr51sDc22EM2YNsLN8M4ps2UKJ0OShPW_A&usqp=CAU")`,
+        // }}
+      >
         <form className="search-form">
           <img id="logo-img" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
-          <h2 className="search-title"> Main News </h2>
+          <h1 className="search-title">Main Headlines</h1>
         </form>
       </div>
       <div>
