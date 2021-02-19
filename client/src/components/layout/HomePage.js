@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import TextField from "@material-ui/core/TextField";
-import ReactPlayer from "react-player";
+import WeatherData from "./WeatherData.js";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -31,10 +28,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomePage = () => {
+  const [stories, setStories] = useState({});
   const classes = useStyles();
+
+  const getWeatherApi = async () => {
+    debugger;
+    try {
+      const response = await fetch(`api/v1/weatherApi`);
+      debugger;
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
+      }
+
+      const NewsData = await response.json();
+      console.log(NewsData);
+
+      setStories(...stories, NewsData);
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  useEffect(() => {
+    getWeatherApi();
+  }, []);
+
   return (
     <div className={classes.hero}>
-      <img id="logo-home" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
+      <WeatherData current={stories.current} location={stories.location} />
+      <img id="logo-home" src="https://i.postimg.cc/C5W0VH5g/imageedit-8-5563608188.png" />
       <h1 className="title-uraba">Urabá Television</h1>
       <div id="form-id">
         {/* <div id="youtube-id">
