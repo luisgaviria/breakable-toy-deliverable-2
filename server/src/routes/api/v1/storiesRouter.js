@@ -75,9 +75,9 @@ storiesRouter.post("/", async (req, res) => {
     return res.status(201).json({ story: serializedStory });
   } catch (error) {
     if (error instanceof ValidationError) {
-      console.log(error);
       return res.status(422).json({ errors: error.data });
     }
+    console.log(error);
     return res.status(500).json({ errors: error });
   }
 });

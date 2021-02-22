@@ -26,10 +26,12 @@ const SportsList = (props) => {
   }, []);
 
   const storyListItems = stories.map((storyItem) => {
-    if (storyItem.id) {
-      return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
-    } else {
-      return <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />;
+    if (storyItem.urlToImage !== null) {
+      if (storyItem.id) {
+        return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
+      } else {
+        return <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />;
+      }
     }
   });
 
@@ -37,13 +39,16 @@ const SportsList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <img id="logo-img" src="https://i.postimg.cc/0y6wPc74/PHOTO-2021-02-11-14-18-19.jpg" />
+          <img
+            id="logo-img"
+            src="https://yt3.ggpht.com/ytc/AAUvwnha-LztIFIoGNMehPWagpr5zD2XXPabKcrwCbmNlA=s176-c-k-c0x00ffffff-no-rj-mo"
+          />
           <h2 className="search-title"> Technology News </h2>
         </form>
       </div>
       <div>
         <div id="each-story-tile">
-          <div id="card-holder"> {storyListItems} </div>
+          <div className="list-container"> {storyListItems} </div>
         </div>
       </div>
     </div>

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import TextField from "@material-ui/core/TextField";
 import ReactPlayer from "react-player";
+import { makeStyles } from "@material-ui/core/styles";
+
+import WeatherData from "./WeatherData.js";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://i.postimg.cc/VvDMszs6/PHOTO-2021-02-11-14-19-04.jpg")`,
-    height: "1000px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     position: "relative",
-    // display: "flex",
+    marginBottom: "0%",
     justifyContent: "center",
-    alignItems: "center",
     color: "#fff",
     fontSize: "4rem",
+    bottom: "0%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   root: {
     "& > *": {
@@ -31,21 +31,62 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomePage = () => {
+  const [stories, setStories] = useState({});
   const classes = useStyles();
+
+  const getWeatherApi = async () => {
+    try {
+      const response = await fetch(`api/v1/weatherApi`);
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
+      }
+      const NewsData = await response.json();
+      getYoutubeApi(NewsData);
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  const getYoutubeApi = async (data) => {
+    try {
+      const response = await fetch(`api/v1/youtubeApi`);
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
+      }
+      const body = await response.json();
+      setStories({
+        current: data.current,
+        location: data.location,
+        videos: body,
+      });
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  useEffect(() => {
+    getWeatherApi();
+  }, []);
+
+  let videosItem = null;
+  if (stories.videos) {
+    videosItem = stories.videos.map((item) => {
+      const url = `https://www.youtube.com/watch?v=${item.contentDetails.videoId}`;
+      return <ReactPlayer key={item.id} url={url} />;
+    });
+  }
+
   return (
     <div className={classes.hero}>
-      <img id="logo-home" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
       <h1 className="title-uraba">Urabá Television</h1>
-      <div id="form-id">
-        {/* <div id="youtube-id">
-          <ReactPlayer url="https://www.youtube.com/watch?v=s4KunkGyWvU&ab_channel=URABATELEVISION" />
-        </div> */}
+      <div id="weather-id">
+        <WeatherData current={stories.current} location={stories.location} />
       </div>
-      <img
-        src="https://codata.org/wp-content/uploads/2020/10/if_open-science.png"
-        id="science-picture"
-      ></img>
-      <img src="https://oaklandtech.com/staff/files/2016/09/sports.jpg" id="sports-picture"></img>{" "}
+      <div id="slider-id">{videosItem}</div>
     </div>
   );
 };

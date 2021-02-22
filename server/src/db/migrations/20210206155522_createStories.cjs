@@ -15,7 +15,7 @@ exports.up = async (knex) => {
     table.string("description", 1000000).notNullable();
     table.float("rating");
     table.string("url", 1000000);
-    table.string("urlToImage", 1000000);
+    table.string("urlToImage", 1000000).notNullable();
     table.string("apiId");
     table.bigInteger("userId").unsigned().index().notNullable().references("users.id");
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now());

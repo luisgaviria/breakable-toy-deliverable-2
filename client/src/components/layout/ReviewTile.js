@@ -67,9 +67,9 @@ const ReviewTile = (props) => {
             value={review.comments}
             fullWidth
           />
-          {/* <input type="text" name="comments" value={review.comments} onChange={handleInputChange} /> */}
           <Button
             size="small"
+            id="delete-button"
             color="primary"
             variant="contained"
             value="Delete"
@@ -77,9 +77,8 @@ const ReviewTile = (props) => {
           >
             Delete
           </Button>
-          {/* <input type="button" className="none" value="Delete" onClick={deleteReviewHandler} /> */}
-
           <Button
+            id="delete-button"
             size="small"
             color="primary"
             variant="contained"
@@ -88,7 +87,6 @@ const ReviewTile = (props) => {
           >
             Save
           </Button>
-          {/* <input type="button" className="none" value="Save Edit" onClick={saveReview} /> */}
         </div>
       </form>
     </div>

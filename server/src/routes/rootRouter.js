@@ -5,9 +5,8 @@ import clientRouter from "./clientRouter.js";
 import storiesRouter from "./api/v1/storiesRouter.js";
 import newsApiRouter from "./api/v1/newsApiRouter.js";
 import reviewsRouter from "./api/v1/reviewsRouter.js";
-// import mediaStackRouter from "./api/v1/mediaStackRouter.js";
-// import twitterApiRouter from "./api/v1/twitterApiRouter.js";
-// import techApiRouter from "./api/v1/techApiRouter.js";
+import weatherApiRouter from "./api/v1/weatherApiRouter.js";
+import youtubeApiRouter from "./api/v1/youtubeApiRouter.js";
 
 const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
@@ -17,6 +16,7 @@ rootRouter.use("/api/v1/users", usersRouter); //place your server-side routes he
 rootRouter.use("/api/v1/NewsApi", newsApiRouter);
 rootRouter.use("/api/v1/stories", storiesRouter);
 rootRouter.use("/api/v1/reviews", reviewsRouter);
-// rootRouter.use("/api/v1/tweets", twitterApiRouter);
+rootRouter.use("/api/v1/weatherApi", weatherApiRouter);
+rootRouter.use("/api/v1/youtubeApi", youtubeApiRouter);
 
 export default rootRouter;

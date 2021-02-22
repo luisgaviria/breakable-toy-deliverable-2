@@ -6,7 +6,6 @@ import FormError from "./FormError.js";
 import StoryShow from "./StoryShow.js";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
 
 const NewStoryForm = (props) => {
   const [newStory, setNewStory] = useState({
@@ -19,7 +18,7 @@ const NewStoryForm = (props) => {
     added: false,
   });
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const postStory = async (newStoryData) => {
@@ -32,19 +31,19 @@ const NewStoryForm = (props) => {
 
         body: JSON.stringify(newStoryData),
       });
-
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
           const newErrors = translateServerErrors(body.errors);
+
           return setErrors(newErrors);
         } else {
           const errorMessage = `${response.status} (${response.statusText})`;
+
           const error = new Error(errorMessage);
           throw error;
         }
       } else {
-        // setShouldRedirect(true);
         const body = await response.json();
         setNewStory({
           author: body.story.author ? body.story.author : "",
@@ -58,29 +57,12 @@ const NewStoryForm = (props) => {
           added: true,
           urlToImage: body.story.urlToImage ? body.story.urlToImage : "",
         });
+        setShouldRedirect(true);
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
   };
-
-  // const getNewStories = async () => {
-  //   try {
-  //     const response = await fetch(`api/v1/stories`);
-  //     if (!response.ok) {
-  //       const errorMessage = `${response.status} (${response.statusText})`;
-  //       const error = new Error(errorMessage);
-  //       throw error;
-  //     }
-  //     const NewStoryData = await response.json();
-  //     console.log(NewStoryData);
-
-  //     setParks(...parks, NPSArray);
-  //     postNPSParks(NPSArray);
-  //   } catch (error) {
-  //     console.error(`Error in fetch: ${err.message}`);
-  //   }
-  // };
 
   const handleInputChange = (event) => {
     setNewStory({
@@ -92,7 +74,9 @@ const NewStoryForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     postStory(newStory);
-    clearForm();
+    if (!errors) {
+      clearForm();
+    }
   };
 
   const clearForm = () => {
@@ -106,141 +90,113 @@ const NewStoryForm = (props) => {
   };
 
   if (shouldRedirect) {
-    return <Redirect to="/stories/new" />;
+    return <Redirect to="/stories/all" />;
   }
 
   return (
-    <div className="callout" id="story-form-id">
-      <h1>Add your own story to this Page</h1>
-      <form className="mb" onSubmit={handleSubmit}>
-        <div className="row">
-          <label className="medium-6 columns">
-            Author:
+    <div className="div-form">
+      <div className="callout" id="story-form-id">
+        <h1 className="story-form-title">Add your own story to this Page</h1>
+
+        <form className="mb" onSubmit={handleSubmit}>
+          <div className="row">
+            <label className="medium-6 columns">
+              Author:
+              <TextField
+                id="filled-secondary"
+                label="Author"
+                variant="filled"
+                color="secondary"
+                type="text"
+                name="author"
+                placeholder="Author"
+                onChange={handleInputChange}
+                value={newStory.author}
+                fullWidth
+              />
+              <FormError error={errors.Author} />
+            </label>
+
+            <label className="medium-6 columns ">
+              Title:
+              <TextField
+                id="filled-secondary"
+                label="Title"
+                variant="filled"
+                color="secondary"
+                type="text"
+                name="title"
+                onChange={handleInputChange}
+                value={newStory.title}
+                fullWidth
+              />
+              <FormError error={errors.Title} />
+              {/* <ErrorList errors={errors} /> */}
+            </label>
+          </div>
+          <label className="medium-6 columns ">
+            Description:
             <TextField
               id="filled-secondary"
-              label="Author"
+              label="Description"
               variant="filled"
               color="secondary"
               type="text"
-              name="author"
-              placeholder="Author"
+              name="description"
               onChange={handleInputChange}
-              value={newStory.author}
+              value={newStory.description}
               fullWidth
             />
-            {/* <input
-              type="text"
-              name="author"
-              placeholder="Author"
-              onChange={handleInputChange}
-              value={newStory.author}
-            /> */}
-            <FormError error={errors.author} />
+            <div>{errors.description}</div>
+            <FormError error={errors.Description} />
           </label>
 
-          <label className="medium-6 columns">
-            Title:
+          <label>
+            Rating:
+            <select
+              label="Rating"
+              name="rating"
+              onChange={handleInputChange}
+              value={newStory.rating}
+            >
+              <option value=" "></option>
+              <option value="5">★★★★★</option>
+              {/* <option value="1.5">1.5 Stars</option> */}
+              <option value="4">★★★★ </option>
+              {/* <option value="2.5">2.5 Stars </option> */}
+              <option value="3">★★★ </option>
+              {/* <option value="3.5">3.5 Stars </option> */}
+              <option value="2">★★ </option>
+              {/* <option value="4.5">4.5 Stars </option> */}
+              <option value="1">★ </option>
+            </select>
+            <FormError error={errors.Rating} />
+          </label>
+
+          <label>
+            Picture:
             <TextField
               id="filled-secondary"
-              label="Title"
+              label="Please enter complete URL"
               variant="filled"
               color="secondary"
               type="text"
-              name="title"
+              name="urlToImage"
               onChange={handleInputChange}
-              value={newStory.title}
+              value={newStory.urlToImage}
               fullWidth
             />
-            {/* <input
-              type="text"
-              name="title"
-              placeholder="title"
-              onChange={handleInputChange}
-              value={newStory.title}
-            /> */}
-            <FormError error={errors.content} />
+            <FormError error={errors.UrlToImage} />
           </label>
-        </div>
-        <label className="medium-6 columns">
-          Description:
-          <TextField
-            id="filled-secondary"
-            label="Description"
-            variant="filled"
-            color="secondary"
-            type="text"
-            name="description"
-            onChange={handleInputChange}
-            value={newStory.description}
-            fullWidth
-          />
-          {/* <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            onChange={handleInputChange}
-            value={newStory.description}
-          /> */}
-        </label>
 
-        <label>
-          Rating:
-          <select label="Rating" name="rating" onChange={handleInputChange} value={newStory.rating}>
-            <option value=" "></option>
-            <option value="5">★★★★★</option>
-            {/* <option value="1.5">1.5 Stars</option> */}
-            <option value="4">★★★★ </option>
-            {/* <option value="2.5">2.5 Stars </option> */}
-            <option value="3">★★★ </option>
-            {/* <option value="3.5">3.5 Stars </option> */}
-            <option value="2">★★ </option>
-            {/* <option value="4.5">4.5 Stars </option> */}
-            <option value="1">★ </option>
-          </select>
-          <FormError error={errors.rating} />
-        </label>
-
-        <label>
-          Picture:
-          <TextField
-            id="filled-secondary"
-            label="Please enter complete URL"
-            variant="filled"
-            color="secondary"
-            type="text"
-            name="urlToImage"
-            onChange={handleInputChange}
-            value={newStory.urlToImage}
-            fullWidth
-          />
-          {/* <input
-            type="text"
-            name="urlToImage"
-            placeholder="Please enter complete URL"
-            onChange={handleInputChange}
-            value={newStory.urlToImage}
-          /> */}
-        </label>
-
-        <div>
-          {/* <input className="button" type="submit" value="Submit" /> */}
-          <Button size="small" color="primary" variant="contained" type="submit" value="Submit">
-            Submit
-          </Button>
-        </div>
-      </form>
-
-      {newStory.added ? (
-        <StoryShow
-          storyData={newStory}
-          // author={newStory.author}
-          // apiId="333333"
-          // title={newStory.title}
-          // description={newStory.description}
-          // urlToImage={newStory.urlToImage}
-          // rating={newStory.rating}
-        />
-      ) : null}
+          <div>
+            <Button size="small" color="primary" variant="contained" type="submit" value="Submit">
+              Submit
+            </Button>
+          </div>
+        </form>
+        {newStory.added ? <StoryShow storyData={newStory} /> : null}
+      </div>
     </div>
   );
 };

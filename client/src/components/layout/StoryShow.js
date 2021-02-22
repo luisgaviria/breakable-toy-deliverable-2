@@ -169,7 +169,6 @@ const StoryShow = (props) => {
         }
       }
       const body = await response.json();
-
       setStory({
         ...story,
         reviews: body.reviews,
@@ -271,16 +270,16 @@ const StoryShow = (props) => {
                     <div textalign="center" id="description">
                       {story.content}
                     </div>
+                    <div className="review-comment-box">
+                      <NewReviewForm storyId={story.id} postReview={postReview} />
+                      {allTheReviews.length ? allTheReviews : null}
+                    </div>
                   </Typography>
                 </Grid>
               </Grid>
             </Paper>
           </div>
         </Grid>
-      </div>
-      <div className="review-comment-box">
-        <NewReviewForm storyId={story.id} postReview={postReview} />
-        {allTheReviews.length ? allTheReviews : null}
       </div>
     </div>
   );

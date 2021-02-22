@@ -46,7 +46,6 @@ const StoryList = (props) => {
           throw error;
         }
       } else {
-        // getStories();
         return;
       }
     } catch (error) {
@@ -66,9 +65,7 @@ const StoryList = (props) => {
       NewsData.map((data) => {
         data.userId = 2;
       });
-
       setStories(...stories, NewsData);
-
       postNewsApiStories(NewsData);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -76,42 +73,29 @@ const StoryList = (props) => {
   };
 
   const storyListItems = stories.map((storyItem) => {
-    if (storyItem.id) {
-      return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
-    } else {
-      return <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />;
+    if (storyItem.urlToImage !== null) {
+      if (storyItem.id) {
+        return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
+      } else {
+        return <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />;
+      }
     }
   });
 
   return (
     <div>
-      <div
-        className="top-section"
-        // style={{
-        //   backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2yr51sDc22EM2YNsLN8M4ps2UKJ0OShPW_A&usqp=CAU")`,
-        // }}
-      >
+      <div className="top-section">
         <form className="search-form">
-          <img id="logo-img" src="https://i.postimg.cc/kG2pxwLT/imageedit-17-5936691456.png" />
+          <img
+            id="logo-img"
+            src="https://yt3.ggpht.com/ytc/AAUvwnha-LztIFIoGNMehPWagpr5zD2XXPabKcrwCbmNlA=s176-c-k-c0x00ffffff-no-rj-mo"
+          />
           <h1 className="search-title">Main Headlines</h1>
         </form>
       </div>
       <div>
-        <div id="each-park-tile">
-          <div id="card-holder">
-            <Grid container spacing={3}>
-              <Grid item xs={"auto"} sm={"auto"} md={"auto"} lg={"auto"}>
-                {storyListItems}
-              </Grid>
-            </Grid>
-          </div>
-        </div>
+        <div className="list-container">{storyListItems}</div>
       </div>
-      {/* <footer>
-        <a href="https://github.com/luisgaviria" target="_blank">
-          Github link
-        </a>
-      </footer> */}
     </div>
   );
 };

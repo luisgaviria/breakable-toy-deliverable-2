@@ -31,7 +31,6 @@ const ScienceShow = (props) => {
         throw error;
       }
       const body = await response.json();
-      console.log(body);
       setStory(body.story);
     } catch (error) {
       console.error(`Err in fetch: ${error.message}`);

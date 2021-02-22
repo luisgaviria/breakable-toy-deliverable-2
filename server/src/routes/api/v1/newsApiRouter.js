@@ -23,7 +23,6 @@ newsApiRouter.get("/", (req, res) => {
           await Story.query().insertAndFetch(story);
         }
       });
-      console.log(data);
       res.set({ "Content-Type": "application/json" }).status(200).json(data);
     }
   });

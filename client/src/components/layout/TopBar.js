@@ -24,18 +24,10 @@ const TopBar = ({ user }) => {
     <div className="navbar">
       <div className="top-bar" id="top-id">
         <div className="top-bar-left">
-          {/* <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-            <ul className="nav-menu-items">
-
-            </ul>
-          </nav> */}
           <div className="menu">
             <ul className="menu" id="ul-top-bar">
               <li>
                 <Link to="/">Home</Link>
-                {/* <Link href="/" component="button" variant="body2">
-                  Home
-                </Link> */}
               </li>
               <li>
                 <Link to="/stories">Main Headlines</Link>
