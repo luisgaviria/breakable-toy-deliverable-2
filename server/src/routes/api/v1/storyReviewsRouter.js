@@ -9,25 +9,6 @@ import ReviewSerializer from "../../serializer/ReviewSerializer.js";
 
 const storyReviewsRouter = new express.Router({ mergeParams: true });
 
-// storyReviewsRouter.get("/:storyId", async (req, res) => {
-//   try {
-//     const reviews = await Review.query().where({ storyId: req.params.storyId });
-
-//     const serializedReviews = [];
-//     for (const review of reviews) {
-//       const serializedReview = await ReviewSerializer.showData(review);
-//       serializedReviews.push(serializedReview);
-//     }
-//     // serializedParks.sort((a, b) => {
-//     //   return b.voteTotal - a.voteTotal;
-//     // });
-//     return res.status(200).json({ reviews: serializedReviews });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ errors: error });
-//   }
-// });
-
 storyReviewsRouter.get("/:storyId", async (req, res) => {
   try {
     const reviews = await Review.query().where({ storyId: req.params.storyId });
@@ -37,9 +18,6 @@ storyReviewsRouter.get("/:storyId", async (req, res) => {
       const serializedReview = await ReviewSerializer.showData(review);
       serializedReviews.push(serializedReview);
     }
-    // serializedParks.sort((a, b) => {
-    //   return b.voteTotal - a.voteTotal;
-    // });
 
     return res.status(200).json({ reviews: serializedReviews });
   } catch (error) {

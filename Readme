@@ -2,7 +2,26 @@ Description:
 
 My project is a website that would provided access to news stories and useful information.
 By focusing on positive and empowering stories as well as useful information I think this website could make a diference for people in the community.
-By incorporating third party APIS, displaying the stories on the front end and piecing together all of the logic with the back end I get to showcase what I've learned while
-at Launch Academy.
+
+This project is built with express and react as well as objection and knex. It incorporates third party apis such as newsApi, google apis and weatherApi.
+
+To use you will need to have yarn installed and node version 14.15 or later.
+
+Libraries used: got, google apis node, foundation, react player, uses a postgreSQL database. 
+
+To run this project you will need to add the SessionSecret to the .env file. you will need to create a database (createdb the_name) and run the knex migrations 
+by typing the commands yarn run migrate:latest or roll the migration by running yarn migrate:rollback, you can seed data by running yarn run db:seed. To hit a back end debugger run yarn dev:debug
+
+This projects uses youtube/google apis as well as weatherApi and newsApi.
+
+After creating an account and logging in you can visit localhost:3000 to see the site running. You will see news categories from science, sports, tech and more.
+A user can submit a review on a story if they choose to do so. A user can also enter their own story.
+
+In the future I would like to incorporate twitter api so I can display local news targeted from twitter updates.
+
+I will continue working on this project until it is production ready as there is a need to use it.
+
+
+
 
 

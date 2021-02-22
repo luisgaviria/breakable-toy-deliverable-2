@@ -26,7 +26,6 @@ reviewsRouter.patch("/:reviewId", async (req, res) => {
     const reviewId = req.params.reviewId;
     const comments = req.body.comments;
     const rating = parseFloat(req.body.rating);
-    console.log(rating, reviewId, comments);
     await Review.query().patch({ comments: comments }).findById(reviewId);
     const review = await Review.query()
       .patch({ comments: comments, rating: rating })
@@ -35,7 +34,6 @@ reviewsRouter.patch("/:reviewId", async (req, res) => {
     return res.status(201).json({ review: review });
   } catch (error) {
     if (error instanceof ValidationError) {
-      console.log(error);
       return res.status(422).json({ errors: error.data });
     }
     console.log(error);

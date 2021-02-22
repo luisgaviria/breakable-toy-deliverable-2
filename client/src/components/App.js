@@ -56,7 +56,6 @@ const App = (props) => {
         <Route exact path="/stories/:id">
           <StoryShow user={currentUser} />
         </Route>
-
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
