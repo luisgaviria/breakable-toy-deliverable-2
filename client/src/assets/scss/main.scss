@@ -36,7 +36,7 @@
 }
 
 .container {
-  width: 40vw;
+  width: 85vw;
   max-width: 600px;
   height: 26vh;
   max-height: 300px;
@@ -47,7 +47,7 @@
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  margin-bottom: 1%;
+  margin-bottom: 0.5%;
 }
 
 .container .left {
@@ -80,8 +80,6 @@
 
 #weather-id {
   font-size: 20pt;
-  margin-right: auto;
-  margin-left: auto;
   text-align: center;
   margin-top: -2%;
 }
@@ -93,15 +91,14 @@
 }
 
 .title-uraba {
+  color: rgba(18, 107, 250, 0.774);
   text-align: center;
   font-weight: bold;
   font-size: 10vw;
-  text-shadow: 1px 1px 4px #707070;
+  text-shadow: 1px 1px 4px #010102;
 }
 
 #description {
-  font-size: 13pt;
-  margin-top: -2%;
   margin-bottom: 4%;
   width: 60%;
   align-items: center;
@@ -116,25 +113,19 @@
   font-weight: bolder;
 }
 
-// @media only screen and (max-width: 420px) {
-//   .search-title {
-//     font-size: 2em;
-//   }
-// }
-
 .search-title {
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid rgb(85, 82, 82);
   color: rgb(0, 0, 0);
   font-family: "Bitter", serif;
-  font-size: 5vw;
-  margin-top: -13%;
+  font-size: 6vh;
+  margin-top: -3.4%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   width: auto;
   height: auto;
   font-weight: bolder;
-  text-shadow: 1px 1px 5px #707070;
+  text-shadow: 1px 1px 5px #383434;
 }
 
 #posted-title {
@@ -176,7 +167,6 @@
 
 .search-form {
   margin-bottom: 2%;
-  background-color: transparent;
 }
 
 label {
@@ -209,11 +199,11 @@ label {
 #logo-img {
   display: inline-flex;
   margin-top: 0%;
-  margin-left: 5%;
-  margin-bottom: 6%;
+  // margin-left: -1%;
+  margin-bottom: 0%;
   align-items: left;
   border-radius: 15%;
-  height: 10%;
+  height: 10vh;
 }
 
 .weather-icon {
@@ -223,7 +213,7 @@ label {
 }
 
 #slider-id {
-  width: 100%;
+  width: 85vw;
   max-width: 600px;
   height: 46vh;
   overflow-x: scroll;
@@ -271,10 +261,16 @@ label {
   border-radius: 2%;
   margin-top: 2px;
   margin-bottom: 0.5%;
-  width: 100%;
+  width: 80vw;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.review-comment-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 #review-form {
@@ -344,29 +340,43 @@ label {
 }
 
 #title-id {
-  color: rgb(49, 49, 66);
+  font-family: "Bitter", serif;
+  color: rgb(60, 60, 73);
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   font-weight: bold;
-  font-size: 20pt;
+  font-size: 18pt;
   text-align: center;
   justify-content: center;
   display: flex;
-  margin-bottom: 0%;
+  // margin-bottom: 1%;
+  transition: transform 0.03s;
 }
-#title-id:hover {
-  background-color: rgba(44, 39, 73, 0.164);
+
+.title-class {
+  // margin-left: auto;
+  // margin-right: auto;
+  // font-weight: bold;
+
+  // text-align: center;
+  // justify-content: center;
+  // display: flex;
+  margin-bottom: 1%;
+  transition: transform 0.03s;
+}
+
+.title-class:hover {
+  transform: scale(1.01);
 }
 
 .background {
-  width: 70%;
-  background-color: rgba(67, 56, 71, 0.35);
+  width: 100%;
+  background-color: rgba(152, 151, 156, 0.335);
   margin-top: 0%;
   align-content: center;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 1%;
 }
 
 #review-header {
@@ -375,24 +385,14 @@ label {
   margin-right: auto;
 }
 
-#show-paper {
-  border-radius: 1%;
-  margin-top: 2%;
-  margin-bottom: 5%;
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .image-id {
-  margin-top: 2%;
-  margin-bottom: 2%;
+  // margin-top: 2%;
+  // margin-bottom: 2%;
   border-radius: 1.5% !important;
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  width: 100%;
+  width: 80%;
   max-width: 420px;
   height: 25vh;
 }
@@ -402,17 +402,22 @@ label {
   align-content: center;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
   width: 60%;
+  margin-bottom: 10pt;
 }
 
-#story-show-description {
-  color: black;
-  font-size: 1vw;
-  height: auto;
-  text-align: center;
-  margin-top: 1vh;
-  margin-bottom: 10pt;
-  width: auto;
+.showpage-frame {
+  margin-top: 0.1%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #author {
@@ -474,7 +479,7 @@ label {
 .top-bar-right,
 .menu,
 .top-bar {
-  background-color: #151518;
+  background-color: #2a2a33;
   height: 80px;
   display: flex;
   justify-content: start;
@@ -492,17 +497,17 @@ label {
 }
 
 .nav-menu-items {
-  background-color: #151518 !important;
+  background-color: #2a2a33 !important;
   width: 100%;
 }
 
 .ul-top-bar {
-  background-color: #151518 !important;
+  background-color: #2a2a33 !important;
 }
 
 #sign-out {
   margin-top: 2px;
-  background-color: #151518;
+  background-color: #2a2a33;
 }
 
 a {
