@@ -7,7 +7,7 @@ const newsApiKey = "4f667e85ebf64b24919832a4ff1475ed";
 class newsApiClient {
   static async getNewsData() {
     try {
-      const url = `http://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`;
+      const url = `http://newsapi.org/v2/top-headlines?country=co&apiKey=${newsApiKey}`;
       const apiResponse = await got(url);
       const responseBody = apiResponse.body;
       const parsedBody = JSON.parse(responseBody);
@@ -70,7 +70,7 @@ class newsApiClient {
 
   static async getTechData() {
     try {
-      const url = `http://newsapi.org/v2/top-headlines?category=technology&country=us&apiKey=${newsApiKey}`;
+      const url = `http://newsapi.org/v2/top-headlines?category=technology&country=co&apiKey=${newsApiKey}`;
       const apiResponse = await got(url);
       const responseBody = apiResponse.body;
       const parsedBody = JSON.parse(responseBody);
