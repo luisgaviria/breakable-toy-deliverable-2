@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import StoryTile from "./StoryTile.js";
 import { withRouter } from "react-router";
 
-import Grid from "@material-ui/core/Grid";
-
 const StoryList = (props) => {
   const [stories, setStories] = useState([]);
 

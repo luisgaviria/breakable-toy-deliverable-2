@@ -12,7 +12,7 @@ const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
 
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
-rootRouter.use("/api/v1/users", usersRouter); //place your server-side routes here
+rootRouter.use("/api/v1/users", usersRouter);
 rootRouter.use("/api/v1/NewsApi", newsApiRouter);
 rootRouter.use("/api/v1/stories", storiesRouter);
 rootRouter.use("/api/v1/reviews", reviewsRouter);

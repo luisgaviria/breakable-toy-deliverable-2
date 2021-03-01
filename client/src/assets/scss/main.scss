@@ -183,7 +183,7 @@ label {
 
 #story-tile {
   font-size: 60vw;
-  // width: 100%;
+
   transition: transform 0.03s;
   align-items: center;
   margin-left: auto;
@@ -199,7 +199,7 @@ label {
 #logo-img {
   display: inline-flex;
   margin-top: 0%;
-  // margin-left: -1%;
+
   margin-bottom: 0%;
   align-items: left;
   border-radius: 15%;
@@ -229,9 +229,7 @@ label {
 }
 
 #slider-id:hover {
-  transform: scale(
-    1
-  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1);
 }
 
 .card-id {
@@ -308,7 +306,7 @@ label {
   margin-right: 30%;
   width: 100%;
   margin-bottom: 2px;
-  // border: 3px solid yellow;
+
   height: auto;
   text-align: center;
 }
@@ -350,18 +348,11 @@ label {
   text-align: center;
   justify-content: center;
   display: flex;
-  // margin-bottom: 1%;
+
   transition: transform 0.03s;
 }
 
 .title-class {
-  // margin-left: auto;
-  // margin-right: auto;
-  // font-weight: bold;
-
-  // text-align: center;
-  // justify-content: center;
-  // display: flex;
   margin-bottom: 1%;
   transition: transform 0.03s;
 }
@@ -386,8 +377,6 @@ label {
 }
 
 .image-id {
-  // margin-top: 2%;
-  // margin-bottom: 2%;
   border-radius: 1.5% !important;
   margin-left: auto;
   margin-right: auto;
@@ -451,12 +440,7 @@ label {
   font-family: "Bitter", serif;
   font-weight: bold;
   color: rgb(22, 61, 133);
-  // font-size: 10px;
-  // align-items: center;
 
-  // height: auto;
-  // text-align: center;
-  // position: absolute;
   display: flex;
   width: 80%;
   align-content: center;
