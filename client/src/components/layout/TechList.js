@@ -14,7 +14,7 @@ const SportsList = (props) => {
         throw error;
       }
       const NewsData = await response.json();
-      console.log(NewsData);
+      // console.log(NewsData);
       setStories(...stories, NewsData);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
