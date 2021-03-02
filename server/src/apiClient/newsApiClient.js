@@ -70,7 +70,7 @@ class newsApiClient {
 
   static async getTechData() {
     try {
-      const url = `http://newsapi.org/v2/top-headlines?category=technology&country=co&apiKey=${newsApiKey}`;
+      const url = `http://newsapi.org/v2/top-headlines?category=technology&country=us&apiKey=${newsApiKey}`;
       const apiResponse = await got(url);
       const responseBody = apiResponse.body;
       const parsedBody = JSON.parse(responseBody);

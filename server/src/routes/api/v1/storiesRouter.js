@@ -30,7 +30,6 @@ storiesRouter.get("/:id", async (req, res) => {
     const story = await Story.query().findOne({ apiId: storyId });
     return res.status(200).json({ story: story });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ errors: error });
   }
 });
@@ -53,7 +52,7 @@ storiesRouter.post("/NewsApi", async (req, res) => {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data });
     }
-    console.log(error);
+
     return res.status(500).json({ errors: error });
   }
 });
@@ -77,7 +76,7 @@ storiesRouter.post("/", async (req, res) => {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data });
     }
-    console.log(error);
+
     return res.status(500).json({ errors: error });
   }
 });

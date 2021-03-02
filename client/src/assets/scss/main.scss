@@ -183,23 +183,24 @@ label {
 
 #story-tile {
   font-size: 60vw;
-  // width: 100%;
-  transition: transform 0.03s;
+
+  transition: transform 0.02s;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
 }
 
 #story-tile:hover {
   transform: scale(
-    1.15
+    1.06
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.5);
 }
 
 #logo-img {
   display: inline-flex;
   margin-top: 0%;
-  // margin-left: -1%;
+
   margin-bottom: 0%;
   align-items: left;
   border-radius: 15%;
@@ -229,9 +230,7 @@ label {
 }
 
 #slider-id:hover {
-  transform: scale(
-    1
-  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1);
 }
 
 .card-id {
@@ -252,7 +251,7 @@ label {
   width: 100%;
   max-width: 400px;
   height: 24vh;
-
+  margin-top: 0.8rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -308,7 +307,7 @@ label {
   margin-right: 30%;
   width: 100%;
   margin-bottom: 2px;
-  // border: 3px solid yellow;
+
   height: auto;
   text-align: center;
 }
@@ -350,18 +349,11 @@ label {
   text-align: center;
   justify-content: center;
   display: flex;
-  // margin-bottom: 1%;
+  margin-top: 10px;
   transition: transform 0.03s;
 }
 
 .title-class {
-  // margin-left: auto;
-  // margin-right: auto;
-  // font-weight: bold;
-
-  // text-align: center;
-  // justify-content: center;
-  // display: flex;
   margin-bottom: 1%;
   transition: transform 0.03s;
 }
@@ -371,9 +363,11 @@ label {
 }
 
 .background {
-  width: 100%;
-  background-color: rgba(152, 151, 156, 0.335);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(231, 226, 230, 0.335);
   margin-top: 0%;
+  // margin-bottom: 0%;
   align-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -386,8 +380,6 @@ label {
 }
 
 .image-id {
-  // margin-top: 2%;
-  // margin-bottom: 2%;
   border-radius: 1.5% !important;
   margin-left: auto;
   margin-right: auto;
@@ -414,8 +406,10 @@ label {
   flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
-
+  // box-shadow: 0 0 11px rgba(33, 33, 33, 3);
+  // border: solid rgba(33, 33, 33, 0.5);
   width: 100%;
+  background-color: rgba(241, 244, 246, 0.42);
   margin-left: auto;
   margin-right: auto;
 }
@@ -451,12 +445,7 @@ label {
   font-family: "Bitter", serif;
   font-weight: bold;
   color: rgb(22, 61, 133);
-  // font-size: 10px;
-  // align-items: center;
 
-  // height: auto;
-  // text-align: center;
-  // position: absolute;
   display: flex;
   width: 80%;
   align-content: center;

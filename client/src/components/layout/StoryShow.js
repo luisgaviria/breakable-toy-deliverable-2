@@ -68,7 +68,7 @@ const StoryShow = (props) => {
         throw error;
       }
       const body = await response.json();
-      console.log(body.story);
+      // console.log(body.story);
       await getReviews(body.story);
     } catch (error) {
       console.error(`Err in fetch: ${error.message}`);
@@ -237,32 +237,30 @@ const StoryShow = (props) => {
   }
 
   return (
-    <div className="background">
-      <div className="showpage-frame">
-        <h5>
-          <span>{/* Average rating: {story.averageRating} */}</span>
-        </h5>
+    <div className="showpage-frame">
+      <h5>
+        <span>{/* Average rating: {story.averageRating} */}</span>
+      </h5>
 
-        <a className="title-class" target="_blank" href={story.url}>
-          <img
-            className="image-id"
-            src={
-              story.urlToImage ||
-              "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
-            }
-          />
-          <div id="title-id">{story.title}</div>
-        </a>
+      <a className="title-class" target="_blank" href={story.url}>
+        <img
+          className="image-id"
+          src={
+            story.urlToImage ||
+            "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
+          }
+        />
+        <div id="title-id">{story.title}</div>
+      </a>
 
-        <div id="show-description">{story.description}</div>
+      <div id="show-description">{story.description}</div>
 
-        <div textalign="center" id="description">
-          {story.content}
-        </div>
-        <div className="review-comment-box">
-          <NewReviewForm storyId={story.id} postReview={postReview} />
-          {allTheReviews.length ? allTheReviews : null}
-        </div>
+      <div textalign="center" id="description">
+        {story.content}
+      </div>
+      <div className="review-comment-box">
+        <NewReviewForm storyId={story.id} postReview={postReview} />
+        {allTheReviews.length ? allTheReviews : null}
       </div>
     </div>
   );
