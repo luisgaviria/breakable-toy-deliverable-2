@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     position: "relative",
     marginBottom: "0%",
+    marginTop: "0%",
     justifyContent: "center",
     color: "#fff",
     fontSize: "4rem",

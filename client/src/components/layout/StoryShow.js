@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     position: "relative",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     color: "#fff",
@@ -237,49 +238,31 @@ const StoryShow = (props) => {
 
   return (
     <div className="background">
-      <div className="module">
-        <Grid container direction="column" alignItems="center">
-          <div>
-            <h5>
-              <span>{/* Average rating: {story.averageRating} */}</span>
-            </h5>
+      <div className="showpage-frame">
+        <h5>
+          <span>{/* Average rating: {story.averageRating} */}</span>
+        </h5>
 
-            <Paper className={classes.paper} id="show-paper">
-              <Grid>
-                <img
-                  className="image-id"
-                  src={
-                    story.urlToImage ||
-                    "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
-                  }
-                />
-              </Grid>
-              <Grid container spacing={2}>
-                <Grid>
-                  <a className="title-class" target="_blank" href={story.url}>
-                    <div id="title-id">{story.title}</div>
-                  </a>
-                </Grid>
-                <Grid item>
-                  <Typography variant="h6" gutterBottom align="center">
-                    <div id="show-description">{story.description}</div>
-                  </Typography>
-                </Grid>
-                <Grid item md>
-                  <Typography variant="h6" gutterBottom align="center">
-                    <div textalign="center" id="description">
-                      {story.content}
-                    </div>
-                    <div className="review-comment-box">
-                      <NewReviewForm storyId={story.id} postReview={postReview} />
-                      {allTheReviews.length ? allTheReviews : null}
-                    </div>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Paper>
-          </div>
-        </Grid>
+        <a className="title-class" target="_blank" href={story.url}>
+          <img
+            className="image-id"
+            src={
+              story.urlToImage ||
+              "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_400,h_264/https://cannabisbydesignphysicians.com/wp-content/themes/apexclinic/images/no-image/No-Image-Found-400x264.png"
+            }
+          />
+          <div id="title-id">{story.title}</div>
+        </a>
+
+        <div id="show-description">{story.description}</div>
+
+        <div textalign="center" id="description">
+          {story.content}
+        </div>
+        <div className="review-comment-box">
+          <NewReviewForm storyId={story.id} postReview={postReview} />
+          {allTheReviews.length ? allTheReviews : null}
+        </div>
       </div>
     </div>
   );
