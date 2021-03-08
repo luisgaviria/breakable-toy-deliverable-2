@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { makeStyles } from "@material-ui/core/styles";
+// import Container from "@material-ui/core/Container";
 
 import WeatherData from "./WeatherData.js";
 
@@ -33,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
   const [stories, setStories] = useState({});
+  // const [state, setState] = useState({
+  //   playing: true,
+  // });
+
+  // const { playing } = state;
+
   const classes = useStyles();
 
   const getWeatherApi = async () => {
@@ -77,7 +84,7 @@ const HomePage = () => {
   if (stories.videos) {
     videosItem = stories.videos.map((item) => {
       const url = `https://www.youtube.com/watch?v=${item.contentDetails.videoId}`;
-      return <ReactPlayer key={item.id} url={url} />;
+      return <ReactPlayer key={item.id} url={url} muted={false} playing={false} />;
     });
   }
 
