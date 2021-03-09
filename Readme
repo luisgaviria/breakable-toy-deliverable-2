@@ -12,8 +12,6 @@ Libraries used: got, google apis node, foundation, react player, uses a postgreS
 To run this project you will need to add the SessionSecret to the .env file. you will need to create a database (createdb the_name) and run the knex migrations 
 by typing the commands yarn run migrate:latest or roll the migration by running yarn migrate:rollback, you can seed data by running yarn run db:seed. To hit a back end debugger run yarn dev:debug
 
-This projects uses youtube/google apis as well as weatherApi and newsApi.
-
 After creating an account and logging in you can visit localhost:3000 to see the site running. You will see news categories from science, sports, tech and more.
 A user can submit a review on a story if they choose to do so. A user can also enter their own story.
 
