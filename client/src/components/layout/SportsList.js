@@ -38,10 +38,6 @@ const SportsList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <img
-            id="logo-img"
-            src="https://yt3.ggpht.com/ytc/AAUvwnha-LztIFIoGNMehPWagpr5zD2XXPabKcrwCbmNlA=s176-c-k-c0x00ffffff-no-rj-mo"
-          />
           <h2 className="search-title"> Sports News </h2>
         </form>
       </div>

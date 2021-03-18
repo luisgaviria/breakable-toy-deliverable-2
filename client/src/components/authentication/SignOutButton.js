@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const SignOutButton = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -29,9 +30,9 @@ const SignOutButton = () => {
   }
 
   return (
-    <button type="button" className="button" onClick={signOut}>
+    <Button variant="outline-secondary" className="ml-auto" onClick={signOut}>
       Sign Out
-    </button>
+    </Button>
   );
 };
 

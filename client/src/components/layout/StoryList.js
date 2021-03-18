@@ -84,11 +84,7 @@ const StoryList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <img
-            id="logo-img"
-            src="https://yt3.ggpht.com/ytc/AAUvwnha-LztIFIoGNMehPWagpr5zD2XXPabKcrwCbmNlA=s176-c-k-c0x00ffffff-no-rj-mo"
-          />
-          <h1 className="search-title">Main Headlines</h1>
+          <h1 className="search-title">Noticias principales</h1>
         </form>
       </div>
       <div>

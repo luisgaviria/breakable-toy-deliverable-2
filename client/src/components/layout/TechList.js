@@ -39,17 +39,11 @@ const SportsList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <img
-            id="logo-img"
-            src="https://yt3.ggpht.com/ytc/AAUvwnha-LztIFIoGNMehPWagpr5zD2XXPabKcrwCbmNlA=s176-c-k-c0x00ffffff-no-rj-mo"
-          />
-          <h2 className="search-title"> Technology News </h2>
+          <h2 className="search-title"> Tecnología </h2>
         </form>
       </div>
       <div>
-        <div id="each-story-tile">
-          <div className="list-container"> {storyListItems} </div>
-        </div>
+        <div className="list-container"> {storyListItems} </div>
       </div>
     </div>
   );
