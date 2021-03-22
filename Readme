@@ -15,8 +15,6 @@ by typing the commands yarn run migrate:latest or roll the migration by running 
 After creating an account and logging in you can visit localhost:3000 to see the site running. You will see news categories from science, sports, tech and more.
 A user can submit a review on a story if they choose to do so. A user can also enter their own story.
 
-In the future I would like to incorporate twitter api so I can display local news targeted from twitter updates.
-
 I will continue working on this project until it is production ready as there is a need to use it.
 
 
