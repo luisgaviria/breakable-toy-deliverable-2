@@ -3,6 +3,7 @@ import { Redirect, Route, useParams, withRouter } from "react-router-dom";
 import translateServerErrors from "../../services/translateServerErrors.js";
 import NewReviewForm from "./NewReviewForm.js";
 import ReviewTile from "./ReviewTile.js";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
@@ -257,6 +258,11 @@ const StoryShow = (props) => {
 
       <div textalign="center" id="description">
         {story.content}
+      </div>
+      <div className="read-more">
+        <Button variant="outlined" href={story.url}>
+          Read more
+        </Button>
       </div>
       <div className="review-comment-box">
         <NewReviewForm storyId={story.id} postReview={postReview} />

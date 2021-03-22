@@ -86,17 +86,11 @@ const ScienceList = (props) => {
     <div>
       <div className="top-section">
         <form className="search-form">
-          <img
-            id="logo-img"
-            src="https://yt3.ggpht.com/ytc/AAUvwnha-LztIFIoGNMehPWagpr5zD2XXPabKcrwCbmNlA=s176-c-k-c0x00ffffff-no-rj-mo"
-          />
-          <h2 className="search-title"> Science News </h2>
+          <h2 className="search-title"> Ciencia </h2>
         </form>
       </div>
       <div>
-        <div id="each-park-tile">
-          <div className="list-container"> {storyListItems} </div>
-        </div>
+        <div className="list-container"> {storyListItems} </div>
       </div>
     </div>
   );

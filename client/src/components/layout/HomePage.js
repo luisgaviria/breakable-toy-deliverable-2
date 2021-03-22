@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { makeStyles } from "@material-ui/core/styles";
 
+// import Container from "@material-ui/core/Container";
+
+import YoutubeData from "./YoutubeData.js";
 import WeatherData from "./WeatherData.js";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,10 +32,20 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
   },
+  playerWrapper: {
+    width: "100%",
+    position: "relative",
+  },
 }));
 
 const HomePage = () => {
   const [stories, setStories] = useState({});
+  // const [state, setState] = useState({
+  //   playing: true,
+  // });
+
+  // const { playing } = state;
+
   const classes = useStyles();
 
   const getWeatherApi = async () => {
@@ -73,21 +86,15 @@ const HomePage = () => {
     getWeatherApi();
   }, []);
 
-  let videosItem = null;
-  if (stories.videos) {
-    videosItem = stories.videos.map((item) => {
-      const url = `https://www.youtube.com/watch?v=${item.contentDetails.videoId}`;
-      return <ReactPlayer key={item.id} url={url} />;
-    });
-  }
-
   return (
     <div className={classes.hero}>
       <h1 className="title-uraba">Urabá Television</h1>
       <div id="weather-id">
         <WeatherData current={stories.current} location={stories.location} />
       </div>
-      <div id="slider-id">{videosItem}</div>
+      <div className="youtube-item">
+        <YoutubeData current={stories.videos} />
+      </div>
     </div>
   );
 };
