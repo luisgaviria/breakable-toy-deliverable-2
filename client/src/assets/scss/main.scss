@@ -108,7 +108,7 @@
 }
 
 .title-uraba {
-  // margin-top: 20rem;
+  margin-top: -1.5%;
   color: rgba(18, 107, 250, 0.774);
   text-align: center;
   font-weight: bold;
@@ -134,16 +134,16 @@
 .search-title {
   color: rgb(0, 0, 0);
   font-family: "Bitter", serif;
-  font-size: 6vh;
-
+  font-size: 8vh;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
+
   text-align: center;
   width: auto;
   height: auto;
   font-weight: bolder;
-  text-shadow: 1px 1px 5px #383434;
+  text-shadow: 1px 1px 5px #131111;
 }
 
 #posted-title {
@@ -203,22 +203,27 @@ label {
 }
 
 #story-tile {
-  transition: transform 0.03s;
+  transition: transform 0.04s;
   justify-content: center;
 
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 360px;
+  max-width: 370px;
   flex-direction: column;
-  margin-bottom: 10px;
+  padding: 1px 1px 1px 1px;
   border-radius: 2%;
 }
 
+// #story-tile:after {
+//   box-shadow: 3px 3px 5px -1px #80aaaa;
+//   opacity: 0;
+//   transition: opacity 0.3s;
+// }
+
 #story-tile:hover {
-  transform: scale(
-    1.06
-  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.01);
+  box-shadow: 0 0 28px rgba(33, 33, 33, 0.5);
 }
 
 #logo-img {
@@ -273,9 +278,9 @@ label {
   align-items: center;
   border-radius: 1%;
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   height: 24vh;
-  margin-top: 0.8rem;
+  margin-top: 0 auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -642,4 +647,57 @@ nav {
 .sign-in {
   margin-right: 10px;
   // margin-left: 10vw;
+}
+
+.youtube-item {
+  width: 100%;
+}
+
+// .d-flex {
+//   flex-direction: column;
+//   flex-wrap: nowrap;
+//   align-items: center;
+//   margin-left: auto;
+//   margin-right: auto;
+//   margin-bottom: 50px;
+//   border-radius: 2%;
+//   width: auto;
+//   position: relative;
+//   max-width: 400px;
+//   height: auto;
+//   max-height: 340px;
+// }
+
+.d-flex {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border-radius: 2%;
+  width: auto;
+  position: relative;
+
+  height: auto;
+}
+
+// .player-wrapper {
+//   width: auto; // Reset width
+//   height: auto; // Reset height
+// }
+// .react-player {
+//   padding-top: 56.25%; // Percentage ratio for 16:9
+//   position: relative; // Set to relative
+// }
+
+// .react-player > div {
+//   position: absolute; // Scaling will occur since parent is relative now
+// }
+
+.carousel-item {
+  transition: opacity 1s ease-in-out !important;
+}
+li {
+  transition: opacity 1s ease !important;
 }

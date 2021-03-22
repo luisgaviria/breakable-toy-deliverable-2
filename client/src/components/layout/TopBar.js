@@ -55,7 +55,7 @@ const TopBar = ({ user }) => {
                 Historias principales
               </Link>
             </Nav.Link>
-            <Nav.Link className="navbar-brand-text">
+            <Nav.Link className="navbar-brand-text" to="/science">
               <Link className="navbar-brand-text" to="/science">
                 Sciencia
               </Link>
