@@ -23,16 +23,6 @@ class StorySeeder {
         userId: "1",
         apiId: "12",
       },
-      {
-        title: "Noticias del dia",
-        description: "Otra noticia por favor",
-        rating: "2.5",
-        url: "https://www.eltiempo.com/",
-        urlToImage:
-          "https://www.eltiempo.com/files/article_main/uploads/2021/02/06/601f0c29e6cdc.jpeg",
-        userId: "1",
-        apiId: "13",
-      },
     ];
 
     for (const singleStoryData of storyData) {
