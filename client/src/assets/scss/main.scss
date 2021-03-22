@@ -653,21 +653,6 @@ nav {
   width: 100%;
 }
 
-// .d-flex {
-//   flex-direction: column;
-//   flex-wrap: nowrap;
-//   align-items: center;
-//   margin-left: auto;
-//   margin-right: auto;
-//   margin-bottom: 50px;
-//   border-radius: 2%;
-//   width: auto;
-//   position: relative;
-//   max-width: 400px;
-//   height: auto;
-//   max-height: 340px;
-// }
-
 .d-flex {
   flex-direction: column;
   flex-wrap: nowrap;
@@ -681,15 +666,6 @@ nav {
 
   height: auto;
 }
-
-// .player-wrapper {
-//   width: auto; // Reset width
-//   height: auto; // Reset height
-// }
-// .react-player {
-//   padding-top: 56.25%; // Percentage ratio for 16:9
-//   position: relative; // Set to relative
-// }
 
 // .react-player > div {
 //   position: absolute; // Scaling will occur since parent is relative now
