@@ -27,7 +27,7 @@ const YoutubeData = (props) => {
     <>
       <Carousel fade activeIndex={index} onSelect={handleSelect}>
         {videosItem.map((video) => {
-          return <Carousel.Item>{video}</Carousel.Item>;
+          return <Carousel.Item key={video.props.children.key}>{video}</Carousel.Item>;
         })}
       </Carousel>
     </>
