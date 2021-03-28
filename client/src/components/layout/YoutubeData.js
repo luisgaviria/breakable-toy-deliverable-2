@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import Carousel from "react-bootstrap/Carousel";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 const YoutubeData = (props) => {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
   let videosItem = null;
   if (props.current) {
     videosItem = props.current.map((item) => {
@@ -23,9 +19,14 @@ const YoutubeData = (props) => {
     return null;
   }
 
+  // useEffect(() => {
+  //   AOS.init();
+  //   AOS.refresh();
+  // }, []);
+
   return (
     <>
-      <Carousel fade activeIndex={index} onSelect={handleSelect}>
+      <Carousel>
         {videosItem.map((video) => {
           return <Carousel.Item key={video.props.children.key}>{video}</Carousel.Item>;
         })}
