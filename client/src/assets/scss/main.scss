@@ -191,27 +191,27 @@ label {
 }
 
 .list-container {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
   max-width: 1600px;
+  margin-bottom: 6rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(425px, 1fr));
-  gap: 20px;
+  gap: 10px;
 }
 
 #story-tile {
-  font-size: 60vw;
+  transition: transform 0.04s;
+  justify-content: center;
 
-  transition: transform 0.02s;
-  align-items: center;
-  // margin-left: auto;
-  // margin-right: auto;
-}
-
-#story-tile:hover {
-  transform: scale(
-    1.06
-  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 370px;
+  flex-direction: column;
+  padding: 1px 1px 1px 1px;
+  border-radius: 2%;
 }
 
 #logo-img {
