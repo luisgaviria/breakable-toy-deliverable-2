@@ -206,6 +206,7 @@ label {
   transition: transform 0.04s;
   justify-content: center;
 
+
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -213,17 +214,15 @@ label {
   flex-direction: column;
   padding: 1px 1px 1px 1px;
   border-radius: 2%;
+
+
 }
 
-// #story-tile:after {
-//   box-shadow: 3px 3px 5px -1px #80aaaa;
-//   opacity: 0;
-//   transition: opacity 0.3s;
-// }
 
 #story-tile:hover {
   transform: scale(1.01);
   box-shadow: 0 0 28px rgba(33, 33, 33, 0.5);
+
 }
 
 #logo-img {
