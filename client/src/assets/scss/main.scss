@@ -108,6 +108,7 @@
 }
 
 .title-uraba {
+  margin-top: -1.5%;
   color: rgba(18, 107, 250, 0.774);
   text-align: center;
   font-weight: bold;
@@ -131,18 +132,18 @@
 }
 
 .search-title {
-  border-bottom: 1.5px solid rgb(85, 82, 82);
   color: rgb(0, 0, 0);
   font-family: "Bitter", serif;
-  font-size: 6vh;
-  margin-top: -3.4%;
+  font-size: 8vh;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0.5rem;
+
   text-align: center;
   width: auto;
   height: auto;
   font-weight: bolder;
-  text-shadow: 1px 1px 5px #383434;
+  text-shadow: 1px 1px 5px #131111;
 }
 
 #posted-title {
@@ -205,6 +206,7 @@ label {
   transition: transform 0.04s;
   justify-content: center;
 
+
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -212,6 +214,15 @@ label {
   flex-direction: column;
   padding: 1px 1px 1px 1px;
   border-radius: 2%;
+
+
+}
+
+
+#story-tile:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 28px rgba(33, 33, 33, 0.5);
+
 }
 
 #logo-img {
@@ -268,7 +279,7 @@ label {
   width: 100%;
   max-width: 400px;
   height: 24vh;
-  margin-top: 0.8rem;
+  margin-top: 0 auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -487,8 +498,8 @@ label {
   color: rgb(22, 61, 133);
 
   display: flex;
-  width: 80%;
-  align-content: center;
+  width: 100%;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10pt;
@@ -503,42 +514,165 @@ label {
   margin-top: 10pt;
 }
 
-#ul-top-bar,
-.top-bar-left,
-.top-bar-right,
-.menu,
-.top-bar {
-  background-color: #2a2a33;
-  height: 80px;
+// #ul-top-bar,
+// .top-bar-left,
+// .top-bar-right,
+// .menu,
+// .top-bar {
+//   background-color: #2a2a33;
+//   height: 80px;
+//   display: flex;
+//   justify-content: start;
+//   align-items: center;
+//   width: auto;
+//   height: auto;
+//   font-size: 13pt;
+//   font-weight: 400;
+// }
+
+// .menu-bars {
+//   margin-left: 2rem;
+//   font-size: 2rem;
+//   background: none;
+// }
+
+// .nav-menu-items {
+//   background-color: #2a2a33 !important;
+//   width: 100%;
+// }
+
+// .ul-top-bar {
+//   background-color: #2a2a33 !important;
+// }
+
+.ml-auto {
+  // margin-right: 0vw;
+  // float: right;
+  // justify-content: right;
+  // position: right;
+  // overflow: auto;
+}
+
+.navbar {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 0px 0px rgba(212, 214, 212, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  background: #f8fafc;
+  width: 100%;
+}
+nav {
+  background-color: white;
   display: flex;
-  justify-content: start;
+  justify-content: space-around;
   align-items: center;
-  width: auto;
-  height: auto;
-  font-size: 13pt;
-  font-weight: 400;
+  min-height: 8vh;
+  position: relative;
+}
+.logo {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 20px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+.nav-links li {
+  list-style: none;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.menu-bars {
-  margin-left: 2rem;
+.menu-icon {
+  color: white;
   font-size: 2rem;
-  background: none;
+  display: none;
 }
 
-.nav-menu-items {
-  background-color: #2a2a33 !important;
+@media screen and (max-width: 768px) {
+  .nav-links.active {
+    flex-direction: column;
+    position: absolute;
+    top: 8vh;
+    height: 500px;
+    width: 100%;
+    background: #343a40;
+    align-items: center;
+  }
+  .hide {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+}
+
+.navbar-brand-text {
+  margin-right: 1rem;
+  margin-top: 5px;
+  text-align: center;
+  display: flex;
+  font-size: 1.2rem;
+  color: #e9e5e5;
+}
+.navbar-brand-text:hover {
+  transition: 0.3s;
+  text-decoration: 2px overline #e2e7f194;
+  background-size: 100% 5px, auto;
+}
+
+.d-inline-block {
+  margin-left: 1rem;
+  border-radius: 38%;
+  border: 2px solid black;
+  box-shadow: #383434;
+}
+
+.sign-in {
+  margin-right: 10px;
+  // margin-left: 10vw;
+}
+
+.youtube-item {
   width: 100%;
 }
 
-.ul-top-bar {
-  background-color: #2a2a33 !important;
+.d-flex {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border-radius: 2%;
+  width: auto;
+  position: relative;
+
+  height: auto;
 }
 
-#sign-out {
-  margin-top: 2px;
-  background-color: #2a2a33;
-}
+// .react-player > div {
+//   position: absolute; // Scaling will occur since parent is relative now
+// }
 
-a {
-  color: rgb(247, 247, 247);
+.carousel-item {
+  transition: opacity 1s ease-in-out !important;
+}
+li {
+  transition: opacity 1s ease !important;
 }

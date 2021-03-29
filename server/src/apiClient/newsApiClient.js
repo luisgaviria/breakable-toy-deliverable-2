@@ -1,7 +1,5 @@
 import got from "got";
 
-import config from "../../src/config.js";
-
 const newsApiKey = "4f667e85ebf64b24919832a4ff1475ed";
 
 class newsApiClient {

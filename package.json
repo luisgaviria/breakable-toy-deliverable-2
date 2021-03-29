@@ -18,5 +18,8 @@
   },
   "engines": {
     "node": "^14.15"
+  },
+  "dependencies": {
+    "firebase-tools": "^9.8.0"
   }
 }
