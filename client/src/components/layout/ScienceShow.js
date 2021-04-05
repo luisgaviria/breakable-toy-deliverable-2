@@ -53,7 +53,7 @@ const ScienceShow = (props) => {
             <span>
               <h3 className="title-content">
                 <br />
-                {/* Average rating: {story.averageRating} */}
+
                 <br />
               </h3>
             </span>
