@@ -203,15 +203,15 @@ label {
 }
 
 #story-tile {
-  transition: transform 0.03s;
+  transition: transform 0.04s;
   justify-content: center;
 
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 360px;
+  max-width: 370px;
   flex-direction: column;
-  margin-bottom: 10px;
+  padding: 1px 1px 1px 1px;
   border-radius: 2%;
 }
 
