@@ -9,7 +9,7 @@ To use you will need to have yarn installed and node version 14.15 or later.
 
 Libraries used: got, google apis node, foundation, react player, uses a postgreSQL database. 
 
-To run this project you will need to add the SessionSecret to the .env file. you will need to create a database (createdb the_name) and run the knex migrations 
+To run this project you will need to add the SessionSecret to the .env file. you will need to create a database (createdb) and run the knex migrations 
 by typing the commands yarn run migrate:latest or roll the migration by running yarn migrate:rollback, you can seed data by running yarn run db:seed. To hit a back end debugger run yarn dev:debug
 
 After creating an account and logging in you can visit localhost:3000 to see the site running. You will see news categories from science, sports, tech and more.
