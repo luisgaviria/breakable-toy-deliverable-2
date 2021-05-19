@@ -53,18 +53,18 @@
 }
 
 .container {
-  width: 85vw;
-  max-width: 600px;
-  height: 26vh;
+  width: 100%;
+  // max-width: 600px;
+  height: 30vh;
   max-height: 300px;
   border-radius: 5%;
-  background: rgba(19, 22, 22, 0.5);
+  background: white;
   overflow: auto;
-  margin: auto;
-  margin-right: auto;
-  margin-left: auto;
+  // margin: auto;
+  // margin-right: auto;
+  // margin-left: auto;
   text-align: center;
-  margin-bottom: 0.5%;
+  margin-bottom: 10px;
 }
 
 .container .left {
@@ -98,7 +98,7 @@
 #weather-id {
   font-size: 20pt;
   text-align: center;
-  margin-top: -2%;
+  margin-top: 10px;
 }
 
 #form-id {
@@ -242,14 +242,14 @@ label {
 }
 
 #slider-id {
-  width: 85vw;
-  max-width: 600px;
+  width: 100%;
+  // max-width: 600px;
   height: 46vh;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  overflow: auto;
-  display: inline-block;
-  white-space: nowrap;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
+  // overflow: auto;
+  // display: inline-block;
+  // white-space: nowrap;
   justify-content: center;
   border-radius: 1%;
   margin: auto;
@@ -675,4 +675,30 @@ nav {
 }
 li {
   transition: opacity 1s ease !important;
+}
+
+.not-container {
+  text-align: center;
+  width: 100%;
+  // padding-top: 6rem;
+  padding-bottom: 10%;
+  background-image: url("https://i.postimg.cc/VvDMszs6/PHOTO-2021-02-11-14-19-04.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+h1 {
+  font-family: "Roboto Slab", Times, serif;
+  // font-size: 2.4rem;
+  max-width: 1400px;
+  padding-bottom: 2rem;
+  padding-top: 0px;
+  margin-bottom: 0;
+  margin-top: -4px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #063249;
+  align-content: center;
+  font-weight: 1000;
 }
