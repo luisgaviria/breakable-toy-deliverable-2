@@ -3,40 +3,40 @@ import ReactPlayer from "react-player";
 import { makeStyles } from "@material-ui/core/styles";
 
 // import Container from "@material-ui/core/Container";
-
+import Header from "./Header.js";
 import YoutubeData from "./YoutubeData.js";
 import WeatherData from "./WeatherData.js";
 
-const useStyles = makeStyles((theme) => ({
-  hero: {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://i.postimg.cc/VvDMszs6/PHOTO-2021-02-11-14-19-04.jpg")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    position: "relative",
-    marginBottom: "0%",
-    marginTop: "0%",
-    justifyContent: "center",
-    color: "#fff",
-    fontSize: "4rem",
-    bottom: "0%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-  root: {
-    "& > *": {
-      textAlign: "center",
-      marginLeft: "auto",
-      marginRight: "auto",
-      width: "25ch",
-    },
-  },
-  playerWrapper: {
-    width: "100%",
-    position: "relative",
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   hero: {
+//     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://i.postimg.cc/VvDMszs6/PHOTO-2021-02-11-14-19-04.jpg")`,
+//     backgroundPosition: "center",
+//     backgroundRepeat: "no-repeat",
+//     backgroundSize: "cover",
+//     position: "relative",
+//     marginBottom: "0%",
+//     marginTop: "0%",
+//     justifyContent: "center",
+//     color: "#fff",
+//     fontSize: "4rem",
+//     bottom: "0%",
+//     display: "flex",
+//     flexDirection: "column",
+//     justifyContent: "center",
+//   },
+//   root: {
+//     "& > *": {
+//       textAlign: "center",
+//       marginLeft: "auto",
+//       marginRight: "auto",
+//       width: "25ch",
+//     },
+//   },
+//   playerWrapper: {
+//     width: "100%",
+//     position: "relative",
+//   },
+// }));
 
 const HomePage = () => {
   const [stories, setStories] = useState({});
@@ -45,8 +45,6 @@ const HomePage = () => {
   // });
 
   // const { playing } = state;
-
-  const classes = useStyles();
 
   const getWeatherApi = async () => {
     try {
@@ -87,8 +85,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className={classes.hero}>
-      <h1 className="title-uraba">Urabá Television</h1>
+    <div>
+      <Header />
+      {/* <h1 className="title-uraba">Urabá Television</h1> */}
       <div id="weather-id">
         <WeatherData current={stories.current} location={stories.location} />
       </div>
