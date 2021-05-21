@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Header from "./Header.js";
 import YoutubeData from "./YoutubeData.js";
 import WeatherData from "./WeatherData.js";
+import StoryList from "./StoryList.js";
 
 // const useStyles = makeStyles((theme) => ({
 //   hero: {
@@ -93,6 +94,9 @@ const HomePage = () => {
       </div>
       <div className="youtube-item">
         <YoutubeData current={stories.videos} />
+      </div>
+      <div>
+        <StoryList />
       </div>
     </div>
   );
