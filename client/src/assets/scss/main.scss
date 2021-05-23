@@ -703,11 +703,11 @@ li {
   // background-repeat: no-repeat;
   // background-position: center center;
   // background-attachment: fixed;
-  background: url("https://i.postimg.cc/76Y1kPYB/PHOTO-2021-05-21-10-43-52.jpg") no-repeat center
-    center fixed;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
+  background: url("https://i.postimg.cc/76Y1kPYB/PHOTO-2021-05-21-10-43-52.jpg") transparent
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   transition: 5s;
 
