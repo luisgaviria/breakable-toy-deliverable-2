@@ -32,7 +32,7 @@ const TopBar = ({ user }) => {
     <header>
       <Navbar className="navbar" collapseOnSelect expand="md" bg="dark" variant="dark">
         <Navbar.Brand>
-          <a href="https://www.urabatv.com" className="navbar-brand">
+          <a href="http://www.urabatv.com" className="navbar-brand">
             <img
               width="80"
               height="30"
