@@ -24,14 +24,14 @@ const WeatherData = (props) => {
             <h4 className="homepage-weather-text">
               {props.location.name ? props.location.name : null}, Antioquia
             </h4>
-            <h4 className="homepage-weather-text">
+            {/* <h4 className="homepage-weather-text">
               Forecast: {props.current.condition.text ? props.current.condition.text : null}
+            </h4> */}
+            <h4 className="homepage-weather-text">
+              Temperatura: {props.current.temp_c ? props.current.temp_c : null}° grados
             </h4>
             <h4 className="homepage-weather-text">
-              Temperature: {props.current.temp_c ? props.current.temp_c : null}° celsius
-            </h4>
-            <h4 className="homepage-weather-text">
-              wind-speed: {props.current.wind_kph ? props.current.wind_kph : null} kmph
+              Velocidad del viento: {props.current.wind_kph ? props.current.wind_kph : null} kmph
             </h4>
           </div>
         </div>

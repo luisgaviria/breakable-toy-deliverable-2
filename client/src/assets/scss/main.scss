@@ -693,7 +693,8 @@ li {
 }
 
 .not-container {
-  height: 50vh;
+  height: 45vh;
+  max-width: 100%;
   text-align: center;
   // width: 100%;
   // padding-top: 20rem;
@@ -702,12 +703,39 @@ li {
   // background-repeat: no-repeat;
   // background-position: center center;
   // background-attachment: fixed;
-  background: url("https://scontent-bos3-1.xx.fbcdn.net/v/t1.6435-9/60622109_2222657991134199_4031139154497634304_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=730e14&_nc_ohc=KeFqY9TH9pQAX9kEXnq&_nc_ht=scontent-bos3-1.xx&oh=fb1b5b368256db3bc391052c8ed2ae65&oe=60CB3F54")
-    no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url("https://i.postimg.cc/76Y1kPYB/PHOTO-2021-05-21-10-43-52.jpg") no-repeat center
+    center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
   background-size: cover;
+  transition: 5s;
+
+  animation-name: animate;
+  animation-duration: 30s;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes animate {
+  0% {
+    background-image: url("https://i.postimg.cc/hGd3Cz8R/PHOTO-2021-05-21-10-43-47.jpg");
+  }
+  20% {
+    background-image: url("https://i.postimg.cc/T1792fjc/PHOTO-2021-05-21-10-43-47-1.jpg");
+  }
+  40% {
+    background-image: url("https://i.postimg.cc/y6vnyyqS/PHOTO-2021-05-21-10-43-48.jpg");
+  }
+  60% {
+    background-image: url("https://i.postimg.cc/nhQkZ8Xv/PHOTO-2021-05-21-10-43-48-1.jpg");
+  }
+  80% {
+    background-image: url("https://i.postimg.cc/QMQJ9pkC/PHOTO-2021-05-21-10-43-49.jpg");
+  }
 }
 
 // h1 {
