@@ -13,25 +13,29 @@ const WeatherData = (props) => {
 
   if (props.current && props.location) {
     return (
-      <div className="container">
-        <div className="not-card">
-          <h4 className="h4-text">{dt}</h4>
+      <div className="card">
+        <a href="https://weather.com/es-US/tiempo/hoy/l/7.88,-76.62?par=google">
           <div className="weather-icon">
             <img src={`http:${props.current.condition.icon}`}></img>
           </div>
+        </a>
 
-          <h4 className="homepage-weather-text">
-            {props.location.name ? props.location.name : null}, Antioquia
-          </h4>
-          {/* <h4 className="homepage-weather-text">
-              Forecast: {props.current.condition.text ? props.current.condition.text : null}
-            </h4> */}
-          <h4 className="homepage-weather-text">
-            Temperatura: {props.current.temp_c ? props.current.temp_c : null}° grados
-          </h4>
-          <h4 className="homepage-weather-text">
+        <div className="weatherInfo">
+          <div className="temperature">{props.current.temp_c ? props.current.temp_c : null}°</div>
+          {/* <div className="place">
             Velocidad del viento: {props.current.wind_kph ? props.current.wind_kph : null} kmph
-          </h4>
+          </div> */}
+
+          <div className="description">
+            <div className="weatherCondition">
+              {props.current.condition.text ? props.current.condition.text : null}
+            </div>
+            <div className="place">
+              {props.location.name ? props.location.name : null}, Antioquia
+            </div>
+          </div>
+
+          <div className="date">{dt}</div>
         </div>
       </div>
     );
