@@ -1,10 +1,8 @@
 Description:
 
-My project is a website that would provided access to news stories and useful information.
-By focusing on positive and empowering stories as well as useful information I think this website could make a diference for people in the community.
+Uraba TV is a website that would provided access to news stories and useful information. a user can sign up, view local stories and review them.
 
 This project is built with express and react as well as objection and knex. It incorporates third party apis such as newsApi, google apis and weatherApi.
-
 
 Libraries used: got, google apis node, foundation, react player, uses a postgreSQL database. 
 
