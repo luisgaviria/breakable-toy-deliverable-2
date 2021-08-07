@@ -10,7 +10,7 @@
 To run this project you will need to add the SessionSecret to the .env file. you will need to create a database (createdb) and run the knex migrations 
 by typing the commands yarn run migrate:latest or roll the migration by running yarn migrate:rollback, you can seed data by running yarn run db:seed.* 
 
-*After creating an account and logging in you can visit localhost:3000 to see the site running. You will see news categories from science, sports, tech and more. 
+*After creating an account and logging in you can visit localhost:3000 to see the site running. You will see news categories from science, sports, tech and more. You can visit the site by navigating to [Urabatv.com](www.urabatv.com)
 
 *A user can submit a review on a story if they choose to do so. A user can also enter their own story.*
 
