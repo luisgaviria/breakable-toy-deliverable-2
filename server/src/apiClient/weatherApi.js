@@ -1,7 +1,5 @@
 import got from "got";
 
-import config from "../../src/config.js";
-
 const weatherApiKey = "e286e1788c8c439f8bb32506212801";
 
 class weatherApiClient {
