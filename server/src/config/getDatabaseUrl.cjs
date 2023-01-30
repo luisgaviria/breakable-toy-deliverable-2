@@ -1,9 +1,9 @@
 const getDatabaseUrl = (nodeEnv) => {
   return (
     {
-      development: "postgres://postgres:postgres@localhost:5432/breakable-toy-v1_development",
-      test: "postgres://postgres:postgres@localhost:5432/breakable-toy-v1_test",
-      e2e: "postgres://postgres:postgres@localhost:5432/breakable-toy-v1_e2e",
+      development: "postgres://drjfdasc:3frTrm1U3fqGaFontTZBuGZkTqGSu2XP@chunee.db.elephantsql.com/drjfdasc",
+      test: "postgres://drjfdasc:3frTrm1U3fqGaFontTZBuGZkTqGSu2XP@chunee.db.elephantsql.com/drjfdasc",
+      e2e: "postgres://drjfdasc:3frTrm1U3fqGaFontTZBuGZkTqGSu2XP@chunee.db.elephantsql.com/drjfdasc",
     }[nodeEnv] || process.env.DATABASE_URL
   );
 };
