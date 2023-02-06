@@ -2,7 +2,7 @@ import express from "express";
 
 import newsApiClient from "../../../apiClient/newsApiClient.js";
 import Story from "../../../models/Story.js";
-
+import {translate} from "@vitalets/google-translate-api";
 const newsApiRouter = new express.Router();
 
 newsApiRouter.get("/", (req, res) => {
@@ -29,7 +29,7 @@ newsApiRouter.get("/", (req, res) => {
 });
 
 newsApiRouter.get("/science", (req, res) => {
-  newsApiClient.getScienceData().then((data) => {
+  newsApiClient.getScienceData().then(async (data) => {
     if (data.error) {
       console.log(`Error from news Api: ${data.error}`);
     } else {
@@ -43,9 +43,18 @@ newsApiRouter.get("/science", (req, res) => {
             story.description = "This field does not exits.";
           }
           story.userId = 2;
-          await Story.query().insertAndFetch(story);
+          try{
+            const {text} = await translate(story.description,{to: 'es'});
+            // console.log(text);
+            story.description = text; 
+            await Story.query().insertAndFetch(story);
+          }
+          catch(err){
+            console.log("Can't translate. We reached request limit");
+          }
         }
       });
+
       res.set({ "Content-Type": "application/json" }).status(200).json(data);
     }
   });
@@ -89,7 +98,14 @@ newsApiRouter.get("/technology", (req, res) => {
             story.description = "This field does not exits.";
           }
           story.userId = 2;
-          await Story.query().insertAndFetch(story);
+          try{
+            const {text} = await translate(story.description,{to: 'es'});
+            story.description = text; 
+            await Story.query().insertAndFetch(story);
+          }
+          catch(err){
+            console.log("Can't translate. We reached request limit");
+          }
         }
       });
       res.set({ "Content-Type": "application/json" }).status(200).json(data);

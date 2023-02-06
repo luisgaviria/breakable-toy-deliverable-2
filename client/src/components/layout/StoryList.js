@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StoryTile from "./StoryTile.js";
 import { withRouter } from "react-router";
+import Helmet from "react-helmet"
 
 const StoryList = (props) => {
   const [stories, setStories] = useState([]);
@@ -71,11 +72,23 @@ const StoryList = (props) => {
   };
 
   const storyListItems = stories.map((storyItem) => {
+    console.log(storyItem);
     if (storyItem.urlToImage !== null) {
       if (storyItem.id) {
-        return <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />;
+        return(<> 
+          <Helmet>
+            <meta name={`descriptionTile${storyItem.id}`} content={storyItem.description} />
+          </Helmet>
+          <StoryTile key={storyItem.id} storyData={storyItem} user={props.user} />
+        </>
+        );
       } else {
-        return <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />;
+        return (<>
+          <Helmet>
+            <meta name={`descriptionTile${storyItem.apiId}`} content={storyItem.description} />
+          </Helmet>
+          <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />
+        </>) 
       }
     }
   });
