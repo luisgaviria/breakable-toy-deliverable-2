@@ -32,9 +32,18 @@ app.use(
     extended: true,
   })
 );
+app.use((req, res, next) => {
+  res.append('Access-Control-Allow-Origin', ['*']);
+  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.append('Access-Control-Allow-Headers', 'Content-Type');
+  res.append('Accept-Encoding','gzip, compress, br');
+  next();
+});
 app.use(bodyParser.json());
 addMiddlewares(app);
 app.use(rootRouter);
+
+
 app.listen(configuration.web.port, configuration.web.host, () => {
   console.log("Server is listening...");
 });
