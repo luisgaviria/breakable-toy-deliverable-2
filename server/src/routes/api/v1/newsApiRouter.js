@@ -2,7 +2,7 @@ import express from "express";
 
 import newsApiClient from "../../../apiClient/newsApiClient.js";
 import Story from "../../../models/Story.js";
-import {translate} from "@vitalets/google-translate-api";
+import {translate} from "free-translate";
 const newsApiRouter = new express.Router();
 
 newsApiRouter.get("/", (req, res) => {
@@ -42,11 +42,12 @@ newsApiRouter.get("/science", (req, res) => {
           if (story.description === null) {
             story.description = "This field does not exits.";
           }
-          story.userId = 2;
+          // story.userId = 2;
           try{
-            const {text} = await translate(story.description,{to: 'es'});
-            // console.log(text);
-            story.description = text; 
+            // console.log("hello")
+            // const res = await translate(story.description,{from: 'en',to: 'es'});
+            // console.log(res);
+            // story.description = text; 
             await Story.query().insertAndFetch(story);
           }
           catch(err){

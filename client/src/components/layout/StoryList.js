@@ -61,9 +61,9 @@ const StoryList = (props) => {
         throw error;
       }
       const NewsData = await response.json();
-      NewsData.map((data) => {
-        data.userId = 2;
-      });
+      // NewsData.map((data) => {
+      //   data.userId = 1;
+      // });
       setStories(...stories, NewsData);
       postNewsApiStories(NewsData);
     } catch (error) {

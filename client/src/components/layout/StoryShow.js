@@ -61,6 +61,7 @@ const StoryShow = (props) => {
       storyId = props.storyData.apiId;
     }
     try {
+      console.log(storyId);
       const response = await fetch(`/api/v1/stories/${storyId}`);
 
       if (!response.ok) {
@@ -69,7 +70,7 @@ const StoryShow = (props) => {
         throw error;
       }
       const body = await response.json();
-      // console.log(body.story);
+ 
       await getReviews(body.story);
     } catch (error) {
       console.error(`Err in fetch: ${error.message}`);

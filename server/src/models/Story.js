@@ -11,7 +11,9 @@ class Story extends unique(Model) {
     return "stories";
   }
   static get relationMappings() {
-    const { Review, User } = require("./index");
+    const { Review, 
+        // User 
+    } = require("./index");
     return {
       reviews: {
         relation: Model.HasManyRelation,
@@ -21,14 +23,14 @@ class Story extends unique(Model) {
           to: "reviews.storyId",
         },
       },
-      user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: User,
-        join: {
-          from: "stories.userId",
-          to: "users.id",
-        },
-      },
+      // user: {
+      //   relation: Model.BelongsToOneRelation,
+      //   modelClass: User,
+      //   join: {
+      //     from: "stories.userId",
+      //     to: "users.id",
+      //   },
+      // },
     };
   }
 

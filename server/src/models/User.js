@@ -36,21 +36,23 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings() {
-    const { Review, Story } = require("./index");
+    const { Review,   
+      // Story 
+    } = require("./index");
 
     return {
-      stories: {
-        relation: Model.ManyToManyRelation,
-        modelClass: Story,
-        join: {
-          from: "users.id",
-          through: {
-            from: "reviews.userId",
-            to: "reviews.storyId",
-          },
-          to: "stories.id",
-        },
-      },
+      // stories: {
+      //   relation: Model.ManyToManyRelation,
+      //   modelClass: Story,
+      //   join: {
+      //     from: "users.id",
+      //     through: {
+      //       from: "reviews.userId",
+      //       to: "reviews.storyId",
+      //     },
+      //     to: "stories.id",
+      //   },
+      // },
       reviews: {
         relation: Model.HasManyRelation,
         modelClass: Review,

@@ -13,6 +13,7 @@ storiesRouter.use("/:storyId/reviews", storyReviewsRouter);
 storiesRouter.get("/", async (req, res) => {
   try {
     const stories = await Story.query().orderBy("publishedAt", "desc").limit("20");
+    console.log(stories);z
     const serializedStories = [];
     for (const story of stories) {
       const serializedStory = await StorySerializer.showData(story);
