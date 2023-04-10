@@ -6,20 +6,20 @@ import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
-    <Button variant="outline-secondary" className="sign-in">
-      <Link to="/user-sessions/new">Sign In</Link>
-    </Button>,
-    // <li key="sign-in" className="button" id="sign-out">
+    // <Button variant="outline-secondary" className="sign-in">
     //   <Link to="/user-sessions/new">Sign In</Link>
-    // </li>,
-    // <li key="sign-up" className="button" id="sign-out">
-    //   <Link to="/users/new" className="button">
-    //     Sign Up
-    //   </Link>
-    // </li>,
-    <Button className="sign-up" variant="outline-secondary">
-      <Link to="/users/new">Sign Up</Link>
-    </Button>,
+    // </Button>,
+    // // <li key="sign-in" className="button" id="sign-out">
+    // //   <Link to="/user-sessions/new">Sign In</Link>
+    // // </li>,
+    // // <li key="sign-up" className="button" id="sign-out">
+    // //   <Link to="/users/new" className="button">
+    // //     Sign Up
+    // //   </Link>
+    // // </li>,
+    // <Button className="sign-up" variant="outline-secondary">
+    //   <Link to="/users/new">Sign Up</Link>
+    // </Button>,
   ];
 
   const authenticatedListItems = [
@@ -30,7 +30,7 @@ const TopBar = ({ user }) => {
 
   return (
     <header>
-      <Navbar className="navbar" collapseOnSelect expand="md" bg="dark" variant="dark">
+      <Navbar className="navbar" collapseOnSelect expand="md" bg="light" variant="light" >
         <Navbar.Brand>
           <a href="http://www.urabatv.com" className="navbar-brand">
             <img
@@ -42,8 +42,8 @@ const TopBar = ({ user }) => {
             ></img>
           </a>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" bg="light" expand="lg" variant="light"/>
+        <Navbar.Collapse bg="light" expand="lg" variant="light" id="responsive-navbar-nav">
           <Nav className="ml-auto">
             {/* <Nav.Link className="navbar-brand-text">
               <Link className="navbar-brand-text" to="/">
@@ -65,16 +65,16 @@ const TopBar = ({ user }) => {
                 Tecnologia
               </Link>
             </Nav.Link>
-            <Nav.Link className="navbar-brand-text">
+            {/* <Nav.Link className="navbar-brand-text">
               <Link className="navbar-brand-text" to="/stories/new">
                 Agrega tu propia historia
               </Link>
-            </Nav.Link>
-            <Nav.Link className="navbar-brand-text">
+            </Nav.Link> */}
+            {/* <Nav.Link className="navbar-brand-text">
               <Link className="navbar-brand-text" to="/stories/all">
                 Todas las noticias
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
 
           <Nav.Link className="ml-auto">

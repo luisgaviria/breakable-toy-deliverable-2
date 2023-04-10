@@ -5,18 +5,15 @@ import { hot } from "react-hot-loader/root";
 import getCurrentUser from "../services/getCurrentUser";
 import "../assets/scss/main.scss";
 
-import RegistrationForm from "./registration/RegistrationForm";
-import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
-import SignInForm from "./authentication/SignInForm";
-import UserProfile from "./layout/UserProfile.js";
+// import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import TopBar from "./layout/TopBar";
 import StoryList from "../components/layout/StoryList.js";
 import StoryShow from "./layout/StoryShow.js";
-import NewStoryForm from "./layout/NewStoryForm.js";
+// import NewStoryForm from "./layout/NewStoryForm.js";
 import ScienceList from "./layout/ScienceList.js";
 import SportsList from "./layout/SportsList.js";
 import TechList from "./layout/TechList.js";
-import PostedStories from "./layout/PostedStories.js";
+// import PostedStories from "./layout/PostedStories.js";
 import HomePage from "./layout/HomePage.js";
 
 const App = (props) => {
@@ -49,16 +46,16 @@ const App = (props) => {
         <Route exact path="/technology">
           <TechList user={currentUser} />
         </Route>
-        <Route exact path="/stories/all">
+        {/* <Route exact path="/stories/all">
           <PostedStories user={currentUser} />
-        </Route>
-        <AuthenticatedRoute exact path="/stories/new" component={NewStoryForm} user={currentUser} />
+        </Route> */}
+        {/* <AuthenticatedRoute exact path="/stories/new" component={NewStoryForm} user={currentUser} /> */}
         <Route exact path="/stories/:id">
           <StoryShow user={currentUser} />
         </Route>
-        <Route exact path="/users/new" component={RegistrationForm} />
+        {/* <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
-        <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
+        <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} /> */}
       </Switch>
     </Router>
   );

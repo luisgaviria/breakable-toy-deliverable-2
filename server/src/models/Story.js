@@ -37,7 +37,7 @@ class Story extends unique(Model) {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["title", "description", "urlToImage"],
+      required: ["title", "description"],
       author: { type: "string" },
       content: { type: "string" },
       publishedAt: { type: "string" },

@@ -574,9 +574,10 @@ label {
 
 .navbar {
   width: 100%;
-  background-color: white;
+  // background-color: black !important;
   box-shadow: 0px 0px 0px 0px rgba(212, 214, 212, 0.5);
 }
+
 
 * {
   margin: 0;
@@ -647,7 +648,7 @@ nav {
   text-align: center;
   display: flex;
   font-size: 1.2rem;
-  color: #e9e5e5;
+  color: black;
 }
 .navbar-brand-text:hover {
   transition: 0.3s;

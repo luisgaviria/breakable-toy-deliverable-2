@@ -6,21 +6,21 @@ import Helmet from "react-helmet"
 const StoryList = (props) => {
   const [stories, setStories] = useState([]);
 
-  const getStories = async () => {
-    try {
-      const response = await fetch("/api/v1/stories");
+  // const getStories = async () => {
+  //   try {
+  //     const response = await fetch("/api/v1/stories");
 
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        const error = new Error(errorMessage);
-        throw error;
-      }
-      const body = await response.json();
-      setStories(body.stories);
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`);
-    }
-  };
+  //     if (!response.ok) {
+  //       const errorMessage = `${response.status} (${response.statusText})`;
+  //       const error = new Error(errorMessage);
+  //       throw error;
+  //     }
+  //     const body = await response.json();
+  //     setStories(body.stories);
+  //   } catch (error) {
+  //     console.error(`Error in fetch: ${error.message}`);
+  //   }
+  // };
   useEffect(() => {
     getNewsApiStories();
   }, []);
@@ -65,7 +65,7 @@ const StoryList = (props) => {
       //   data.userId = 1;
       // });
       setStories(...stories, NewsData);
-      postNewsApiStories(NewsData);
+      // postNewsApiStories(NewsData);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }

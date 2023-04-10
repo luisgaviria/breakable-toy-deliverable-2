@@ -19,7 +19,7 @@ newsApiRouter.get("/", (req, res) => {
           if (story.description === null) {
             story.description = "This field does not exits.";
           }
-          story.userId = 2;
+          // story.userId = 2;
           await Story.query().insertAndFetch(story);
         }
       });

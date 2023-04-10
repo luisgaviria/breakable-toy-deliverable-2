@@ -18,6 +18,9 @@ class newsApiClient {
         return newStory;
       });
 
+
+      console.log(allStories);
+
       return allStories;
     } catch (error) {
       return { error: error.message };
