@@ -73,7 +73,6 @@ const StoryList = (props) => {
 
   const storyListItems = stories.map((storyItem) => {
     console.log(storyItem);
-    if (storyItem.urlToImage !== null) {
       if (storyItem.id) {
         return(<> 
           <Helmet>
@@ -90,7 +89,6 @@ const StoryList = (props) => {
           <StoryTile key={storyItem.apiId} storyData={storyItem} user={props.user} />
         </>) 
       }
-    }
   });
 
   return (

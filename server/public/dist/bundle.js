@@ -40728,71 +40728,69 @@ var StoryList = function StoryList(props) {
   }();
   var storyListItems = stories.map(function (storyItem) {
     console.log(storyItem);
-    if (storyItem.urlToImage !== null) {
-      if (storyItem.id) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          __self: _this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 79,
-            columnNumber: 11
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("meta", {
-          name: "descriptionTile".concat(storyItem.id),
-          content: storyItem.description,
-          __self: _this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 80,
-            columnNumber: 13
-          }
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StoryTile_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: storyItem.id,
-          storyData: storyItem,
-          user: props.user,
-          __self: _this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 82,
-            columnNumber: 11
-          }
-        }));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          __self: _this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 87,
-            columnNumber: 11
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("meta", {
-          name: "descriptionTile".concat(storyItem.apiId),
-          content: storyItem.description,
-          __self: _this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 88,
-            columnNumber: 13
-          }
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StoryTile_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: storyItem.apiId,
-          storyData: storyItem,
-          user: props.user,
-          __self: _this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 90,
-            columnNumber: 11
-          }
-        }));
-      }
+    if (storyItem.id) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78,
+          columnNumber: 11
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("meta", {
+        name: "descriptionTile".concat(storyItem.id),
+        content: storyItem.description,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79,
+          columnNumber: 13
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StoryTile_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        key: storyItem.id,
+        storyData: storyItem,
+        user: props.user,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 81,
+          columnNumber: 11
+        }
+      }));
+    } else {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 86,
+          columnNumber: 11
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("meta", {
+        name: "descriptionTile".concat(storyItem.apiId),
+        content: storyItem.description,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87,
+          columnNumber: 13
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StoryTile_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        key: storyItem.apiId,
+        storyData: storyItem,
+        user: props.user,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 89,
+          columnNumber: 11
+        }
+      }));
     }
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 95,
       columnNumber: 5
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -40800,7 +40798,7 @@ var StoryList = function StoryList(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98,
+      lineNumber: 96,
       columnNumber: 7
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -40808,7 +40806,7 @@ var StoryList = function StoryList(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 97,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
@@ -40816,14 +40814,14 @@ var StoryList = function StoryList(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 98,
       columnNumber: 11
     }
   }, "Noticias principales"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 101,
       columnNumber: 7
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -40831,7 +40829,7 @@ var StoryList = function StoryList(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 102,
       columnNumber: 9
     }
   }, storyListItems)));
@@ -91246,7 +91244,7 @@ function invariant(condition, message) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("0f765c1d525abebfebe1")
+/******/ 		__webpack_require__.h = () => ("913f2f661147b8657d5f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
